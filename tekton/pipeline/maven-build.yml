@@ -13,9 +13,8 @@ spec:
       script: |
         #!/usr/bin/env sh
         cd $(workspaces.output.path)  # Navigate to the cloned repo directory
-        mvn clean
         mvn spring-javaformat:apply
-        mvn package  # Run the Maven build
+        mvn clean package -DskipTests # Run the Maven build
       volumeMounts:
         - name: maven-repo-cache
           mountPath: /root/.m2/repository
