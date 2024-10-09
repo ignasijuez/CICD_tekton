@@ -15,6 +15,10 @@ spec:
         cd $(workspaces.output.path)  # Navigate to the cloned repo directory
         mvn spring-javaformat:apply
         mvn clean package -DskipTests # Run the Maven build
+        mvn dockerfile:build dockerfile:push  # Build and push the Docker image
+      env:
+      - name: DOCKER_CONFIG
+        value: /tekton/home/.docker
       volumeMounts:
         - name: maven-repo-cache
           mountPath: /root/.m2/repository
