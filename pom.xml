@@ -17,11 +17,6 @@
 
   <properties>
 
-    <project.version>latest</project.version>
-    <project.build.finalName>spring-petclinic-3.3.0-SNAPSHOT</project.build.finalName>
-    <dockerhub.username>${env.DOCKER_USERNAME}</dockerhub.username>
-    <dockerhub.password>${env.DOCKER_PASSWORD}</dockerhub.password>
-
     <!-- Generic properties -->
     <java.version>17</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -281,30 +276,7 @@
         <artifactId>cyclonedx-maven-plugin</artifactId>
       </plugin>
 
-      <plugin>
-        <groupId>com.spotify</groupId>
-        <artifactId>dockerfile-maven-plugin</artifactId>
-        <version>1.4.13</version>
-        <executions>
-          <execution>
-            <id>default</id>
-            <goals>
-              <goal>build</goal>
-              <goal>push</goal>
-            </goals>
-            <phase>package</phase>
-          </execution>
-        </executions>
-        <configuration>
-          <repository>${dockerhub.username}/springApp</repository>
-          <tag>${project.version}</tag>
-          <buildArgs>
-            <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-          </buildArgs>
-          <username>${dockerhub.username}</username>
-          <password>${dockerhub.password}</password>
-        </configuration>
-      </plugin>
+
 
     </plugins>
   </build>
