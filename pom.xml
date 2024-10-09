@@ -317,6 +317,10 @@
   </licenses>
 
   <repositories>
+      <repository>
+        <id>spotify-maven-repository</id>
+        <url>https://maven.spotify.com</url>
+      </repository>
     <repository>
       <id>spring-snapshots</id>
       <name>Spring Snapshots</name>
