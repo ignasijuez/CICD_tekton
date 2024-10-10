@@ -13,4 +13,5 @@ spec:
       script: |
         #!/usr/bin/env sh
         cd $(workspaces.output.path)
+        echo "Running all tests"
         mvn test

@@ -32,6 +32,7 @@ import org.springframework.samples.petclinic.vet.VetRepository;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("mysql")
 public class PetClinicIntegrationTests {
 
 	@LocalServerPort

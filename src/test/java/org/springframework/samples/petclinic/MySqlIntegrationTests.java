@@ -39,14 +39,14 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("mysql")
-@Testcontainers(disabledWithoutDocker = true)
+//@Testcontainers(disabledWithoutDocker = true)
 @DisabledInNativeImage
 @DisabledInAotMode
 class MySqlIntegrationTests {
 
-	@ServiceConnection
-	@Container
-	static MySQLContainer<?> container = new MySQLContainer<>("mysql:8.4");
+	//@ServiceConnection
+	//@Container
+	//static MySQLContainer<?> container = new MySQLContainer<>("mysql:8.4");
 
 	@LocalServerPort
 	int port;

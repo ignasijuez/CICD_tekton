@@ -3,13 +3,12 @@ kind: Task
 metadata:
   name: spring-app-deployment-apply
 spec:
-  params:
-    - name: manifest
-      description: Path to the manifest file
-      type: string
+  workspaces:
+    - name: output
   steps:
-    - name: spring-app-deployment-apply
-      image: bitnami/kubectl
+    - name: deploy
+      image: bitnami/kubectl:latest
       script: |
         #!/bin/sh
-        kubectl apply -f $(params.manifest)
+        kubectl apply -f $(workspaces.output.path)/tekton/pipeline/spring-app-deployment.yml
+        kubectl apply -f $(workspaces.output.path)/tekton/pipeline/spring-app-service.yml
