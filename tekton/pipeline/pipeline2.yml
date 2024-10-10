@@ -67,6 +67,12 @@ spec:
         - name: manifest
           value: /workspace/output/tekton/pipeline/spring-app-deployment.yml,/workspace/output/tekton/pipeline/spring-app-service.yml
 
-
+    - name: run-tests
+      runAfter: ["deploy-app"]
+      taskRef:
+        name: run-all-tests
+      workspaces:
+        - name: output
+          workspace: shared-workspace
 
 
