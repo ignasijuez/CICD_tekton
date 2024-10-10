@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-app
+  template:
+    metadata:
+      labels:
+        app: springboot-app
+    spec:
+      containers:
+        - name: springboot-container
+          image: juezignasi/myapp:latest # Use the image pushed to DockerHub
+          ports:
+            - containerPort: 8080 # Port on which your app listens
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "mysql" # Set the profile if needed
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://mysql:3306/petclinic"  # Adjust based on your MySQL service
+            - name: MYSQL_USER
+              value: "petclinic" # MySQL username
+            - name: MYSQL_PASS
+              value: "petclinic" # MySQL password
+      imagePullSecrets:
+        - name: dockerhub-secret # Reference the secret to access DockerHub

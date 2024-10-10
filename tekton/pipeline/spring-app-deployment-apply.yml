@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: spring-app-deployment-apply
+spec:
+  params:
+    - name: manifest
+      description: Path to the manifest file
+      type: string
+  steps:
+    - name: spring-app-deployment-apply
+      image: bitnami/kubectl
+      script: |
+        #!/bin/sh
+        kubectl apply -f $(params.manifest)

@@ -56,7 +56,16 @@ spec:
         - name: IMAGE
           value: $(params.image-reference)
 
-
+    - name: deploy-app
+      runAfter: ["build-push"]
+      taskRef:
+        name: spring-app-deployment-apply
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+      params:
+        - name: manifest
+          value: /workspace/output/tekton/pipeline/spring-app-deployment.yml,/workspace/output/tekton/pipeline/spring-app-service.yml
 
 
 
