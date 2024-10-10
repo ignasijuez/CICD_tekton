@@ -17,6 +17,11 @@ spec:
           resources:
             requests:
               storage: 1Gi
+    - name: docker-credentials
+      secret:
+        secretName: docker-credentials
   params:
     - name: repo-url
-      value: https://github.com/ignasijuez/CICD_test.git
+      value: https://github.com/ignasijuez/CICD_tekton.git
+    - name: image-reference
+      value: juezignasi/myapp:latest

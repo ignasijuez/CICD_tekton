@@ -9,10 +9,13 @@ spec:
     - name: repo-url
       type: string
       description: The git repo URL to clone from
+    - name: image-reference
+      type: string
   workspaces:
     - name: shared-workspace
       description: |
         This workspace contains the cloned repo files, so they can be read by the next task
+    - name: docker-credentials
   tasks:
     - name: checkout
       taskRef:
@@ -39,4 +42,22 @@ spec:
       workspaces:
         - name: output
           workspace: shared-workspace
+          
+    - name: build-push
+      runAfter: ["build-app"]
+      taskRef:
+        name: kaniko
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+        - name: dockerconfig
+          workspace: docker-credentials
+      params:
+        - name: IMAGE
+          value: $(params.image-reference)
+
+
+
+
+
 
