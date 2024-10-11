@@ -84,14 +84,16 @@ class MySqlIntegrationTests {
 	}
 
 }*/
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("mysql")
 class MySqlIntegrationTests {
 
 	private static String baseUrl;
-	private final RestTemplate restTemplate;
 
-	public MySqlIntegrationTests(RestTemplateBuilder builder) {
-		this.restTemplate = builder.rootUri(baseUrl).build();
-	}
+	@Autowired
+	private RestTemplateBuilder restTemplateBuilder;
+
+	private RestTemplate restTemplate;
 
 	@BeforeAll
 	static void setUp() {
@@ -104,12 +106,14 @@ class MySqlIntegrationTests {
 
 	@Test
 	void testFindAll() {
+		restTemplate = restTemplateBuilder.rootUri(baseUrl).build();
 		ResponseEntity<String> result = restTemplate.getForEntity("/vets", String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
 	@Test
 	void testOwnerDetails() {
+		restTemplate = restTemplateBuilder.rootUri(baseUrl).build();
 		ResponseEntity<String> result = restTemplate.exchange(RequestEntity.get("/owners/1").build(), String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
