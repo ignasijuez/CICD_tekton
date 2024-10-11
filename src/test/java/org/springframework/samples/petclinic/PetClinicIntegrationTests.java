@@ -28,20 +28,13 @@ import org.springframework.web.client.RestTemplate;
 
 public class PetClinicIntegrationTests {
 
-	private String baseUrl;
 	private RestTemplate restTemplate;
-
-	@Value("${SPRING_APP_BASE_URL:http://springboot-service:80}")
-	private String serviceUrl;
 
 	@BeforeEach
 	void setUp() {
-		// Get the base URL from the environment variable or use a default value
-		baseUrl = System.getenv("SPRING_APP_BASE_URL");
-		if (baseUrl == null || baseUrl.isEmpty()) {
-			baseUrl = "http://springboot-service:80"; // Default to the service name
-		}
-		restTemplate = new RestTemplate();
+		// Initialize the RestTemplate with the base URL for the Kubernetes service
+		String baseUrl = "http://springboot-service:80"; // Use the service name and port in Kubernetes
+		restTemplate = new RestTemplateBuilder().rootUri(baseUrl).build();
 	}
 
 	@Test
