@@ -103,7 +103,7 @@ class MySqlIntegrationTests {
 	}
 
 	@BeforeAll
-	void initRestTemplate() {
+	static void initRestTemplate() {
 		restTemplate = restTemplateBuilder.rootUri(baseUrl).build();
 	}
 
