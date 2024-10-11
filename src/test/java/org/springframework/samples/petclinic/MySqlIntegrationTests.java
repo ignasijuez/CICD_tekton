@@ -41,81 +41,49 @@ import org.springframework.http.HttpMethod;
 
 
 import org.springframework.beans.factory.annotation.Value;
-/*
-//@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-@ActiveProfiles("mysql")
-@DisabledInNativeImage
-@DisabledInAotMode
-class MySqlIntegrationTests {
-
-
-	@LocalServerPort
-	int port;
-
-	@Autowired
-	private VetRepository vets;
-
-	@Autowired
-	private RestTemplateBuilder builder;
-
-	@Test
-	void testFindAll() throws Exception {
-		vets.findAll();
-		vets.findAll(); // served from cache
-	}
-
-	@Test
-	void testOwnerDetails() {
-		//RestTemplate template = builder.rootUri("http://localhost:" + port).build();
-		//ResponseEntity<String> result = template.exchange(RequestEntity.get("/owners/1").build(), String.class);
-		//assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-		String baseUrl = System.getenv("SPRING_APP_BASE_URL");
-		RestTemplate template = builder.rootUri(baseUrl).build();
-		ResponseEntity<String> result = template.exchange(RequestEntity.get("/owners/1").build(), String.class);
-		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-	}
-	@Test
-	void testOwnerDetails() {
-		String baseUrl = System.getenv("SPRING_APP_BASE_URL");
-		RestTemplate template = new RestTemplate(); // Create a new RestTemplate instance
-		ResponseEntity<String> result = template.exchange(baseUrl + "/owners/1", HttpMethod.GET, null, String.class);
-		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-	}
-
-}*/
-
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
+package org.springframework.samples.petclinic;
 
+import static org.assertj.core.api.Assertions.assertThat;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.web.client.RestTemplate;
+
+@ActiveProfiles("mysql")
 class MySqlIntegrationTests {
 
-	private String baseUrl;
+	private static String baseUrl;
 	private RestTemplate restTemplate;
 
+	@Autowired
+	private RestTemplateBuilder restTemplateBuilder;
+
 	@BeforeAll
-	void setUp() {
-		// Set the base URL to your already deployed app's URL
-		baseUrl = System.getenv("SPRING_APP_BASE_URL");
-		//baseUrl = "http://springboot-service:80"; // Use the service name and port exposed by the service
-		if (baseUrl == null || baseUrl.isEmpty()) {
-			baseUrl = "http://springboot-service:80"; // Set this to your actual service URL
-		}
-		restTemplate = new RestTemplate();
+	static void setUp() {
+		// Set the base URL for the Spring Boot app within Kubernetes
+		baseUrl = "http://springboot-service:80"; // Internal service URL
 	}
 
 	@Test
 	void testFindAll() {
-		ResponseEntity<String> result = restTemplate.getForEntity(baseUrl + "/vets", String.class);
+		restTemplate = restTemplateBuilder.rootUri(baseUrl).build();
+		ResponseEntity<String> result = restTemplate.getForEntity("/vets", String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
 	@Test
 	void testOwnerDetails() {
-		ResponseEntity<String> result = restTemplate.exchange(RequestEntity.get(baseUrl + "/owners/1").build(), String.class);
+		restTemplate = restTemplateBuilder.rootUri(baseUrl).build();
+		ResponseEntity<String> result = restTemplate.exchange(RequestEntity.get("/owners/1").build(), String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 }

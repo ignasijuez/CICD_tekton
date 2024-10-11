@@ -41,6 +41,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("mysql")
+@Testcontainers(disabledWithoutDocker = true)
 public class PetClinicIntegrationTests {
 
 	@LocalServerPort
