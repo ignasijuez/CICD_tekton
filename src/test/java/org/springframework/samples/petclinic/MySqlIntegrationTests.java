@@ -87,16 +87,14 @@ class MySqlIntegrationTests {
 
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
-@SpringBootTest
-@ActiveProfiles("mysql")
+
+
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MySqlIntegrationTests {
 
 	private String baseUrl;
 	private RestTemplate restTemplate;
-
-	@Autowired
-	private RestTemplateBuilder restTemplateBuilder;
 
 	@BeforeAll
 	void setUp() {
@@ -105,18 +103,18 @@ class MySqlIntegrationTests {
 		if (baseUrl == null || baseUrl.isEmpty()) {
 			baseUrl = "http://localhost:8085"; // Set this to your actual service URL
 		}
-		restTemplate = restTemplateBuilder.rootUri(baseUrl).build();
+		restTemplate = new RestTemplate();
 	}
 
 	@Test
 	void testFindAll() {
-		ResponseEntity<String> result = restTemplate.getForEntity("/vets", String.class);
+		ResponseEntity<String> result = restTemplate.getForEntity(baseUrl + "/vets", String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
 	@Test
 	void testOwnerDetails() {
-		ResponseEntity<String> result = restTemplate.exchange(RequestEntity.get("/owners/1").build(), String.class);
+		ResponseEntity<String> result = restTemplate.exchange(RequestEntity.get(baseUrl + "/owners/1").build(), String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 }
