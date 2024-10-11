@@ -87,10 +87,12 @@ class MySqlIntegrationTests {
 
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
-@TestInstance(Lifecycle.PER_CLASS)
+@SpringBootTest
+@ActiveProfiles("mysql")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MySqlIntegrationTests {
 
-	private static String baseUrl;
+	private String baseUrl;
 	private RestTemplate restTemplate;
 
 	@Autowired
