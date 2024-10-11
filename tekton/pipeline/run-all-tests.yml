@@ -10,8 +10,18 @@ spec:
   steps:
     - name: run-tests
       image: maven:3.8.7-eclipse-temurin-17
+      env:
+        - name: SPRING_APP_BASE_URL
+          value: "http://localhost:8085/"
       script: |
         #!/usr/bin/env sh
         cd $(workspaces.output.path)
         echo "Running all tests"
         mvn test
+      volumeMounts:
+        - name: maven-repo-cache
+          mountPath: /root/.m2/repository
+  volumes:
+    - name: maven-repo-cache
+      persistentVolumeClaim:
+        claimName: maven-repo-cache-pvc

@@ -37,7 +37,8 @@ import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+//@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ActiveProfiles("mysql")
 //@Testcontainers(disabledWithoutDocker = true)
 @DisabledInNativeImage
@@ -65,7 +66,11 @@ class MySqlIntegrationTests {
 
 	@Test
 	void testOwnerDetails() {
-		RestTemplate template = builder.rootUri("http://localhost:" + port).build();
+		//RestTemplate template = builder.rootUri("http://localhost:" + port).build();
+		//ResponseEntity<String> result = template.exchange(RequestEntity.get("/owners/1").build(), String.class);
+		//assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+		String baseUrl = System.getenv("SPRING_APP_BASE_URL");
+		RestTemplate template = builder.rootUri(baseUrl).build();
 		ResponseEntity<String> result = template.exchange(RequestEntity.get("/owners/1").build(), String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
