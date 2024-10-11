@@ -58,13 +58,13 @@ public class PetClinicIntegrationTests {
 
 	@Test
 	void testFindAll() {
-		ResponseEntity<String> result = restTemplate.getForEntity(baseUrl + "/vets", String.class);
+		ResponseEntity<String> result = restTemplate.getForEntity("/vets", String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
 	@Test
 	void testOwnerDetails() {
-		ResponseEntity<String> result = restTemplate.exchange(RequestEntity.get(baseUrl + "/owners/1").build(), String.class);
+		ResponseEntity<String> result = restTemplate.exchange(RequestEntity.get("/owners/1").build(), String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 }
