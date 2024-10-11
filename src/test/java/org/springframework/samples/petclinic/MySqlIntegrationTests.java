@@ -85,6 +85,9 @@ class MySqlIntegrationTests {
 
 }*/
 
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+@TestInstance(Lifecycle.PER_CLASS)
 class MySqlIntegrationTests {
 
 	private static String baseUrl;
@@ -94,16 +97,12 @@ class MySqlIntegrationTests {
 	private RestTemplateBuilder restTemplateBuilder;
 
 	@BeforeAll
-	static void setUp() {
+	void setUp() {
 		// Set the base URL to your already deployed app's URL
 		baseUrl = System.getenv("SPRING_APP_BASE_URL");
 		if (baseUrl == null || baseUrl.isEmpty()) {
 			baseUrl = "http://localhost:8085"; // Set this to your actual service URL
 		}
-	}
-
-	@BeforeAll
-	static void initRestTemplate() {
 		restTemplate = restTemplateBuilder.rootUri(baseUrl).build();
 	}
 
