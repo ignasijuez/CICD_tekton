@@ -36,6 +36,7 @@ import org.springframework.web.client.RestTemplate;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.springframework.http.HttpMethod;
 
 //@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
