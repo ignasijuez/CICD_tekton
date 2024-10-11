@@ -84,36 +84,37 @@ class MySqlIntegrationTests {
 	}
 
 }*/
-@SpringBootTest
-@ActiveProfiles("mysql")
+
 class MySqlIntegrationTests {
 
 	private static String baseUrl;
+	private RestTemplate restTemplate;
 
 	@Autowired
 	private RestTemplateBuilder restTemplateBuilder;
 
-	private RestTemplate restTemplate;
-
 	@BeforeAll
 	static void setUp() {
-		// Get the base URL from the environment variable or use a default value
+		// Set the base URL to your already deployed app's URL
 		baseUrl = System.getenv("SPRING_APP_BASE_URL");
 		if (baseUrl == null || baseUrl.isEmpty()) {
-			baseUrl = "http://localhost:8080"; // default value
+			baseUrl = "http://localhost:8085"; // Set this to your actual service URL
 		}
+	}
+
+	@BeforeAll
+	void initRestTemplate() {
+		restTemplate = restTemplateBuilder.rootUri(baseUrl).build();
 	}
 
 	@Test
 	void testFindAll() {
-		restTemplate = restTemplateBuilder.rootUri(baseUrl).build();
 		ResponseEntity<String> result = restTemplate.getForEntity("/vets", String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
 	@Test
 	void testOwnerDetails() {
-		restTemplate = restTemplateBuilder.rootUri(baseUrl).build();
 		ResponseEntity<String> result = restTemplate.exchange(RequestEntity.get("/owners/1").build(), String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
