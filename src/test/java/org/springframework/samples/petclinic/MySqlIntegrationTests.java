@@ -43,6 +43,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.beans.factory.annotation.Value;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.BeforeEach;
 
 class MySqlIntegrationTests {
 
