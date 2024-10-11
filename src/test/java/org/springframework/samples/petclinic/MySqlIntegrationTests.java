@@ -100,8 +100,9 @@ class MySqlIntegrationTests {
 	void setUp() {
 		// Set the base URL to your already deployed app's URL
 		baseUrl = System.getenv("SPRING_APP_BASE_URL");
+		//baseUrl = "http://springboot-service:80"; // Use the service name and port exposed by the service
 		if (baseUrl == null || baseUrl.isEmpty()) {
-			baseUrl = "http://localhost:8085"; // Set this to your actual service URL
+			baseUrl = "http://springboot-service:80"; // Set this to your actual service URL
 		}
 		restTemplate = new RestTemplate();
 	}
