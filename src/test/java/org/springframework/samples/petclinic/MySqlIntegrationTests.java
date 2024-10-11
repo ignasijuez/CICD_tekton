@@ -84,7 +84,7 @@ class MySqlIntegrationTests {
 	}
 
 }*/
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest
 @ActiveProfiles("mysql")
 class MySqlIntegrationTests {
 
