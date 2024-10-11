@@ -64,7 +64,7 @@ class MySqlIntegrationTests {
 		vets.findAll(); // served from cache
 	}
 
-	@Test
+	/*@Test
 	void testOwnerDetails() {
 		//RestTemplate template = builder.rootUri("http://localhost:" + port).build();
 		//ResponseEntity<String> result = template.exchange(RequestEntity.get("/owners/1").build(), String.class);
@@ -72,6 +72,13 @@ class MySqlIntegrationTests {
 		String baseUrl = System.getenv("SPRING_APP_BASE_URL");
 		RestTemplate template = builder.rootUri(baseUrl).build();
 		ResponseEntity<String> result = template.exchange(RequestEntity.get("/owners/1").build(), String.class);
+		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+	}*/
+	@Test
+	void testOwnerDetails() {
+		String baseUrl = System.getenv("SPRING_APP_BASE_URL");
+		RestTemplate template = new RestTemplate(); // Create a new RestTemplate instance
+		ResponseEntity<String> result = template.exchange(baseUrl + "/owners/1", HttpMethod.GET, null, String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
