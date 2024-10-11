@@ -19,6 +19,7 @@ package org.springframework.samples.petclinic;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.condition.DisabledInNativeImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,17 +39,16 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.springframework.http.HttpMethod;
 
+
+import org.springframework.beans.factory.annotation.Value;
+/*
 //@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ActiveProfiles("mysql")
-//@Testcontainers(disabledWithoutDocker = true)
 @DisabledInNativeImage
 @DisabledInAotMode
 class MySqlIntegrationTests {
 
-	//@ServiceConnection
-	//@Container
-	//static MySQLContainer<?> container = new MySQLContainer<>("mysql:8.4");
 
 	@LocalServerPort
 	int port;
@@ -65,7 +65,7 @@ class MySqlIntegrationTests {
 		vets.findAll(); // served from cache
 	}
 
-	/*@Test
+	@Test
 	void testOwnerDetails() {
 		//RestTemplate template = builder.rootUri("http://localhost:" + port).build();
 		//ResponseEntity<String> result = template.exchange(RequestEntity.get("/owners/1").build(), String.class);
@@ -74,7 +74,7 @@ class MySqlIntegrationTests {
 		RestTemplate template = builder.rootUri(baseUrl).build();
 		ResponseEntity<String> result = template.exchange(RequestEntity.get("/owners/1").build(), String.class);
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-	}*/
+	}
 	@Test
 	void testOwnerDetails() {
 		String baseUrl = System.getenv("SPRING_APP_BASE_URL");
@@ -83,4 +83,34 @@ class MySqlIntegrationTests {
 		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
+}*/
+class MySqlIntegrationTests {
+
+	private static String baseUrl;
+	private final RestTemplate restTemplate;
+
+	public MySqlIntegrationTests(RestTemplateBuilder builder) {
+		this.restTemplate = builder.rootUri(baseUrl).build();
+	}
+
+	@BeforeAll
+	static void setUp() {
+		// Get the base URL from the environment variable or use a default value
+		baseUrl = System.getenv("SPRING_APP_BASE_URL");
+		if (baseUrl == null || baseUrl.isEmpty()) {
+			baseUrl = "http://localhost:8080"; // default value
+		}
+	}
+
+	@Test
+	void testFindAll() {
+		ResponseEntity<String> result = restTemplate.getForEntity("/vets", String.class);
+		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+	}
+
+	@Test
+	void testOwnerDetails() {
+		ResponseEntity<String> result = restTemplate.exchange(RequestEntity.get("/owners/1").build(), String.class);
+		assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+	}
 }
