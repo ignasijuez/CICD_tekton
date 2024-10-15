@@ -27,16 +27,16 @@ spec:
         - name: url
           value: $(params.repo-url)
 
-    - name: deploy-mysql
-      runAfter: ["checkout"]
-      taskRef:
-        name: deploy-mysql
-      workspaces:
-        - name: output
-          workspace: shared-workspace
+            #    - name: deploy-mysql
+            #runAfter: ["checkout"]
+            #taskRef:
+            #name: deploy-mysql
+            #workspaces:
+            #- name: output
+            #workspace: shared-workspace
 
     - name: build-app
-      runAfter: ["deploy-mysql"]  # Ensures this runs after MySQL is deployed
+      runAfter: ["checkout"]  # Ensures this runs after MySQL is deployed
       taskRef:
         name: maven-build
       workspaces:
@@ -56,8 +56,16 @@ spec:
         - name: IMAGE
           value: $(params.image-reference)
 
-    - name: deploy-app
+    - name: deploy-mysql
       runAfter: ["build-push"]
+      taskRef:
+        name: deploy-mysql
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+
+    - name: deploy-app
+      runAfter: ["deploy-mysql"]
       taskRef:
         name: spring-app-deployment-apply
       workspaces:
