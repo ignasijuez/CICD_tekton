@@ -1,10 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: springboot-service
+  name: tekton-petclinic-service
+  labels:
+    app: tekton-petclinic-service
 spec:
   selector:
-    app: springboot-app
+    app: tekton-petclinic-pod
   ports:
     - protocol: TCP
       port: 80 # Port exposed inside the cluster

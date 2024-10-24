@@ -1,16 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springboot-app
+  name: tekton-petclinic-deployment
+  labels:
+    app: tekton-petclinic-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: springboot-app
+      app: tekton-petclinic-pod
   template:
     metadata:
       labels:
-        app: springboot-app
+        app: tekton-petclinic-pod
+      annotations:
+        pod-name: tekton-petclinic-deployment
     spec:
       containers:
         - name: springboot-container

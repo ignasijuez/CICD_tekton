@@ -19,7 +19,7 @@ spec:
       script: |
         #!/usr/bin/env sh
         # Wait for the MySQL pod to be ready before proceeding
-        MYSQL_POD=$(kubectl get pod -l app=mysql -o jsonpath='{.items[0].metadata.name}')
+        MYSQL_POD=$(kubectl get pod -l app=tekton-mysql-pod -o jsonpath='{.items[0].metadata.name}')
         while [ "$(kubectl get pod $MYSQL_POD -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}')" != "True" ]; do
           echo "Waiting for MySQL pod to be ready..."
           sleep 5
@@ -31,7 +31,7 @@ spec:
       script: |
         #!/usr/bin/env sh
         # Copy initialization SQL scripts into the MySQL container
-        kubectl cp $(workspaces.output.path)/src/main/resources/db/mysql_k8s/. $(kubectl get pod -l app=mysql -o jsonpath="{.items[0].metadata.name}"):/docker-entrypoint-initdb.d/
+        kubectl cp $(workspaces.output.path)/src/main/resources/db/mysql_k8s/. $(kubectl get pod -l app=tekton-mysql-pod -o jsonpath="{.items[0].metadata.name}"):/docker-entrypoint-initdb.d/
         echo "Copied init scripts. Waiting 10 seconds for MySQL to recognize the scripts..."
         sleep 10
 
@@ -39,7 +39,7 @@ spec:
       image: bitnami/kubectl:latest
       script: |
         #!/usr/bin/env sh
-        MYSQL_POD=$(kubectl get pod -l app=mysql -o jsonpath='{.items[0].metadata.name}')
+        MYSQL_POD=$(kubectl get pod -l app=tekton-mysql-pod -o jsonpath='{.items[0].metadata.name}')
         echo "Verifying existence of init scripts in MySQL pod $MYSQL_POD"
         kubectl exec $MYSQL_POD -- ls -la /docker-entrypoint-initdb.d/
 
@@ -47,7 +47,7 @@ spec:
       image: bitnami/kubectl:latest
       script: |
         #!/usr/bin/env sh
-        MYSQL_POD=$(kubectl get pod -l app=mysql -o jsonpath='{.items[0].metadata.name}')
+        MYSQL_POD=$(kubectl get pod -l app=tekton-mysql-pod -o jsonpath='{.items[0].metadata.name}')
         kubectl exec $MYSQL_POD -- ls /docker-entrypoint-initdb.d/
         for script in $(kubectl exec $MYSQL_POD -- sh -c 'ls /docker-entrypoint-initdb.d/'); do
           echo "Executing $script in MySQL pod $MYSQL_POD"
