@@ -27,14 +27,6 @@ spec:
         - name: url
           value: $(params.repo-url)
 
-            #    - name: deploy-mysql
-            #runAfter: ["checkout"]
-            #taskRef:
-            #name: deploy-mysql
-            #workspaces:
-            #- name: output
-            #workspace: shared-workspace
-
     - name: build-app
       runAfter: ["checkout"]  # Ensures this runs after MySQL is deployed
       taskRef:
