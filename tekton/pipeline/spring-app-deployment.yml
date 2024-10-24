@@ -25,7 +25,7 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: "mysql" # Set the profile if needed
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:mysql://mysql:3306/petclinic"  # Adjust based on your MySQL service
+              value: "jdbc:mysql://tekton-mysql-service:3306/petclinic"  # Adjust based on your MySQL service
             - name: MYSQL_USER
               value: "petclinic" # MySQL username
             - name: MYSQL_PASS
