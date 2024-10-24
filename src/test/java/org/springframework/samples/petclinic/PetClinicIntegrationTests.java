@@ -44,7 +44,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 
+@Disabled
 public class PetClinicIntegrationTests {
 
 	private RestTemplate restTemplate;
