@@ -12,9 +12,14 @@ spec:
       image: maven:3.8.7-eclipse-temurin-17
       script: |
         #!/usr/bin/env sh
-        cd $(workspaces.output.path)  # Navigate to the cloned repo directory
-        mvn spring-javaformat:apply
-        mvn clean package
+        currentHour=$(date +%H)
+        if [ "$currentHour" -ge 2 ] && [ "$currentHour" -lt 3 ]; then
+          cd $(workspaces.output.path)  # Navigate to the cloned repo directory
+          mvn spring-javaformat:apply
+          mvn clean package
+        else 
+          exit 1
+        fi
       volumeMounts:
         - name: maven-repo-cache
           mountPath: /root/.m2/repository

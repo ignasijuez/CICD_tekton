@@ -28,7 +28,7 @@ spec:
           value: $(params.repo-url)
 
     - name: build-app
-      runAfter: ["checkout"]  # Ensures this runs after MySQL is deployed
+      runAfter: ["checkout"]
       taskRef:
         name: maven-build
       workspaces:
