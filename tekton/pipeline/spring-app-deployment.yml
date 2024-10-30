@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: springboot-container
-          image: juezignasi/myapp:latest # Use the image pushed to DockerHub
+          image: juezignasi/tekton-app:latest # Use the image pushed to DockerHub
           ports:
             - containerPort: 8080 # Port on which your app listens
           env:

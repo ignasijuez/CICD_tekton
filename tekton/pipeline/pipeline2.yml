@@ -31,6 +31,9 @@ spec:
       runAfter: ["checkout"]
       taskRef:
         name: maven-build
+      params:
+          - name: workspacePath
+            value: "$(workspaces.output.path)"
       workspaces:
         - name: output
           workspace: shared-workspace

@@ -7,18 +7,25 @@ spec:
     This task runs $mvn clean package to build the Spring Boot app.
   workspaces:
     - name: output  # This is the shared workspace containing the repo files
+  params:
+    - name: workspacePath
+      type: string
+      description: "Path to the workspace directory"
+      default: "/workspace/source"  # Default path used if not specified
   steps:
     - name: maven-build-step
       image: maven:3.8.7-eclipse-temurin-17
       script: |
         #!/usr/bin/env sh
         currentHour=$(date +%H)
-        if [ "$currentHour" -ge 2 ] && [ "$currentHour" -lt 3 ]; then
-          cd $(workspaces.output.path)  # Navigate to the cloned repo directory
-          mvn spring-javaformat:apply
-          mvn clean package
-        else 
+        echo "La hora es: "$currentHour""
+        if [ "$currentHour" -ge 2 ] && [ "$currentHour" -lt 4 ]; then
+          echo "No es la hora adecuada, no se ejecuta el paso porque hay mucho tráfico"
           exit 1
+        else
+          cd $(params.workspacePath)  # Navigate to the cloned repo directory
+          mvn spring-javaformat:apply
+          mvn clean package 
         fi
       volumeMounts:
         - name: maven-repo-cache

@@ -1,0 +1,28 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: github-template
+spec:
+  params:
+    - name: repo-url
+      description: The URL of the Git repository
+      default: "https://github.com/tu-usuario/tu-repositorio.git"
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: ci-pipeline-run-
+      spec:
+        pipelineRef:
+          name: ci-pipeline  # Nombre del pipeline que quieres ejecutar
+        params:
+          - name: repo-url
+            value: $(params.repo-url)
+        workspaces:
+          - name: shared-workspace
+            volumeClaimTemplate:
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                resources:
+                  requests:
+                    storage: 1Gi

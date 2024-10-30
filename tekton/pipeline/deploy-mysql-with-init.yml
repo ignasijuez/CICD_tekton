@@ -13,6 +13,7 @@ spec:
         #!/usr/bin/env sh
         # Apply MySQL deployment with mounted persistent volume and init scripts
         kubectl apply -f $(workspaces.output.path)/tekton/pipeline/mysql-deployment-with-init.yml
+        kubectl apply -f $(workspaces.output.path)/tekton/pipeline/mysql-service.yml
    
     - name: wait-for-mysql
       image: bitnami/kubectl:latest

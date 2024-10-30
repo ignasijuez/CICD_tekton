@@ -1,0 +1,20 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: github-listener
+spec:
+  serviceAccountName: tekton-triggers-sa
+  triggers:
+    - name: github-trigger
+      interceptors:
+        - ref:
+            name: "github"
+          params:
+            - name: "secretRef"
+              value:
+                secretName: "github-webhook-secret" # Configura un secreto en Tekton para autenticar el webhook de GitHub
+                secretKey: "secretToken"
+      bindings:
+        - ref: github-binding
+      template:
+        ref: github-template
