@@ -6,7 +6,7 @@ spec:
   params:
     - name: repo-url
       description: The URL of the Git repository
-      default: "https://github.com/tu-usuario/tu-repositorio.git"
+      default: "https://github.com/ignasijuez/CICD_tekton.git"
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
