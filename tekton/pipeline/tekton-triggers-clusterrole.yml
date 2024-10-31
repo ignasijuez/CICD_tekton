@@ -3,13 +3,9 @@ kind: ClusterRole
 metadata:
   name: tekton-triggers-role
 rules:
+  - apiGroups: ["tekton.dev"]
+    resources: ["pipelineruns", "pipelineruns/finalizers", "taskruns"]
+    verbs: ["create", "get", "list", "watch", "update", "delete"]
   - apiGroups: ["triggers.tekton.dev"]
-    resources:
-      - eventlisteners
-      - triggerbindings
-      - triggertemplates
-      - triggers
-      - clustertriggerbindings
-      - interceptors
-      - clusterinterceptors
+    resources: ["eventlisteners", "triggerbindings", "triggertemplates", "triggers", "clustertriggerbindings", "interceptors", "clusterinterceptors"]
     verbs: ["get", "list", "watch", "create", "update", "delete"]

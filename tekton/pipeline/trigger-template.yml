@@ -7,6 +7,9 @@ spec:
     - name: repo-url
       description: The URL of the Git repository
       default: "https://github.com/ignasijuez/CICD_tekton.git"
+    - name: image-reference
+      description: The Docker image reference
+      default: "juezignasi/tekton-app:latest"
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -14,15 +17,24 @@ spec:
         generateName: ci-pipeline-run-
       spec:
         pipelineRef:
-          name: ci-pipeline  # Nombre del pipeline que quieres ejecutar
-        params:
-          - name: repo-url
-            value: $(params.repo-url)
+          name: ci-pipeline
+            #  podTemplate:
+            #securityContext:
+            #fsGroup: 65532
         workspaces:
           - name: shared-workspace
             volumeClaimTemplate:
               spec:
-                accessModes: ["ReadWriteOnce"]
+                accessModes:
+                - ReadWriteOnce
                 resources:
                   requests:
                     storage: 1Gi
+          - name: docker-credentials
+            secret:
+              secretName: docker-credentials
+        params:
+          - name: repo-url
+            value: https://github.com/ignasijuez/CICD_tekton.git
+          - name: image-reference
+            value: juezignasi/tekton-app:latest
