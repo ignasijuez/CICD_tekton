@@ -38,3 +38,4 @@ spec:
             value: https://github.com/ignasijuez/CICD_tekton.git
           - name: image-reference
             value: juezignasi/tekton-app:latest
+            
