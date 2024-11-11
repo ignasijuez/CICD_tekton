@@ -66,15 +66,13 @@ spec:
       workspaces:
         - name: output
           workspace: shared-workspace
-
-
-
-
-
-
-
-
-
-
-
-
+  finally:
+    - name: notify-completion
+      taskSpec:
+        steps:
+          - name: notify-final-status
+            image: curlimages/curl
+            script: |
+              curl -X POST -H "Content-Type: application/json" \
+                -d '{"pipeline": "ci-pipeline", "status": "$(tasks.check-out.status)", "details": "Pipeline completed"}' \
+                https://httpbin.org/post
