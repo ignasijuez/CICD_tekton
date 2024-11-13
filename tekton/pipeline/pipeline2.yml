@@ -66,6 +66,7 @@ spec:
       workspaces:
         - name: output
           workspace: shared-workspace
+  
   finally:
     - name: notify-completion
       taskSpec:
