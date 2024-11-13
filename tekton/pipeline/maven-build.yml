@@ -29,9 +29,7 @@ spec:
           exit 1
         else
           cd $(params.workspacePath)  # Navigate to the cloned repo directory
-          #mvn spring-javaformat:apply
-          #mvn clean package 
-          if mvn spring-javaformat:apppply && mvn clean package; then
+          if mvn spring-javaformat:apply && mvn move package; then
             echo "Success" > $(results.status.path)
             echo "Build completed successfully" > $(results.details.path)
           else
