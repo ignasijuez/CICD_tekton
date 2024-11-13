@@ -12,6 +12,9 @@ spec:
       type: string
       description: "Path to the workspace directory"
       default: "/workspace/source"  # Default path used if not specified
+  results:
+    - name: status
+    - name: details
   steps:
     - name: maven-build-step
       image: maven:3.8.7-eclipse-temurin-17
@@ -20,12 +23,22 @@ spec:
         currentHour=$(date +%H)
         echo "La hora es: "$currentHour""
         if [ "$currentHour" -ge 2 ] && [ "$currentHour" -lt 4 ]; then
-          echo "No es la hora adecuada, no se ejecuta el paso porque hay mucho tráfico"
+          #echo "No es la hora adecuada, no se ejecuta el paso porque hay mucho tráfico"
+          echo "No es la hora adecuada, no se ejecuta el paso porque hay mucho tráfico" > $(results.details.path)
+          echo "Failed" > $(results.status.path)
           exit 1
         else
           cd $(params.workspacePath)  # Navigate to the cloned repo directory
-          mvn spring-javaformat:apply
-          mvn clean package 
+          #mvn spring-javaformat:apply
+          #mvn clean package 
+          if mvn spring-javaformat:apply && mvn clean package; then
+            echo "Success" > $(results.status.path)
+            echo "Build completed successfully" > $(results.details.path)
+          else
+            echo "Failed" > $(results.status.path)
+            echo "Error during maven build" > $(results.details.path)
+            exit 1
+          fi
         fi
       volumeMounts:
         - name: maven-repo-cache

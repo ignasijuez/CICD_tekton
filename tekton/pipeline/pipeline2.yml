@@ -16,6 +16,7 @@ spec:
       description: |
         This workspace contains the cloned repo files, so they can be read by the next task
     - name: docker-credentials
+
   tasks:
     - name: checkout
       taskRef:
@@ -37,6 +38,18 @@ spec:
       workspaces:
         - name: output
           workspace: shared-workspace
+
+    - name: report-status
+      runAfter: [build-app]
+      taskRef:
+        name: report-status
+      params:
+        - name: stageName
+          value: "Maven Build"
+        - name: status
+          value: "$(tasks.maven-build.results.status)"
+        - name: details
+          value: "$(tasks.maven-build.results.details)"
           
     - name: build-push
       runAfter: ["build-app"]

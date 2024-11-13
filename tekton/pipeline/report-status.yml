@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: report-status
+spec:
+  params:
+    - name: stageName
+      type: string
+    - name: status
+      type: string
+    - name: details
+      type: string
+  steps:
+    - name: send-status
+      image: curlimages/curl:latest
+      script: |
+        curl -X POST "https://httpbin.org/post" \
+          -H "Content-Type: application/json" \
+          -d "{
+                \"stage\": \"$(params.stageName)\",
+                \"status\": \"$(params.status)\",
+                \"details\": \"$(params.details)\"
+              }"
