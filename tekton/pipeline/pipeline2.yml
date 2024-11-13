@@ -47,9 +47,9 @@ spec:
         - name: stageName
           value: "Maven Build"
         - name: status
-          value: "$(tasks.maven-build.results.status)"
+          value: "$(tasks.build-app.results.status)"
         - name: details
-          value: "$(tasks.maven-build.results.details)"
+          value: "$(tasks.build-app.results.details)"
           
     - name: build-push
       runAfter: ["build-app"]
