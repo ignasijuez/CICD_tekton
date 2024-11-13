@@ -81,13 +81,23 @@ spec:
           workspace: shared-workspace
   
   finally:
-    - name: notify-completion
-      taskSpec:
-        steps:
-          - name: notify-final-status
-            image: curlimages/curl
-            script: |
-              curl -X POST -H "Content-Type: application/json" \
-                -d '{"pipeline": "ci-pipeline", "status": "$(tasks.check-out.status)", "details": "Pipeline completed"}' \
-                https://httpbin.org/post
+    - name: final-report-status
+      taskRef:
+        name: report-status
+      params:
+        - name: stageName
+          value: "Maven Build"
+        - name: status
+          value: "$(tasks.build-app.results.status)"
+        - name: details
+          value: "$(tasks.build-app.results.details)"
+    #- name: notify-completion
+    #  taskSpec:
+    #    steps:
+    #      - name: notify-final-status
+    #        image: curlimages/curl
+    #        script: |
+    #          curl -X POST -H "Content-Type: application/json" \
+    #            -d '{"pipeline": "ci-pipeline", "status": "$(tasks.check-out.status)", "details": "Pipeline completed"}' \
+    #            https://httpbin.org/post
                 
