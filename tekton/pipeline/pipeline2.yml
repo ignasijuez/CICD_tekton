@@ -87,6 +87,7 @@ spec:
           - name: consolidate-report
             image: curlimages/curl
             script: |
+              apt-get update && apt-get install -y jq
               # Compilar el reporte final leyendo los archivos del directorio report
               report="{\"tasks\": []}"
               for file in /workspace/output/*-status.txt; do
