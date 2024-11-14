@@ -92,7 +92,7 @@ spec:
               for file in /workspace/output/report/*-status.txt; do
                 task_name=$(basename "$file" -status.txt)
                 task_status=$(cat "$file")
-                task_details=$(cat "/workspace/output/report/${task_name}-details.txt")
+                task_details=$(cat "/workspace/output/${task_name}-details.txt")
                 report=$(echo "$report" | jq --arg task "$task_name" --arg status "$task_status" --arg details "$task_details" '.tasks += [{"name": $task, "status": $status, "details": $details}]')
               done
               echo "Final Report: $report"
