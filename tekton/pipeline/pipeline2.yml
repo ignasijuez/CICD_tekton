@@ -89,7 +89,7 @@ spec:
             script: |
               # Compilar el reporte final leyendo los archivos del directorio report
               report="{\"tasks\": []}"
-              for file in /workspace/output/report/*-status.txt; do
+              for file in /workspace/output/*-status.txt; do
                 task_name=$(basename "$file" -status.txt)
                 task_status=$(cat "$file")
                 task_details=$(cat "/workspace/output/${task_name}-details.txt")
