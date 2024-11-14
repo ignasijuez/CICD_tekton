@@ -81,16 +81,36 @@ spec:
           workspace: shared-workspace
   
   finally:
-    - name: final-report-status
-      taskRef:
-        name: report-status
-      params:
-        - name: stageName
-          value: "Maven Build"
-        - name: status
-          value: "$(tasks.build-app.results.status)"
-        - name: details
-          value: "$(tasks.build-app.results.details)"
+    - name: generate-final-report
+      taskSpec:
+        steps:
+          - name: consolidate-report
+            image: curlimages/curl
+            script: |
+              # Compilar el reporte final leyendo los archivos del directorio report
+              report="{\"tasks\": []}"
+              for file in /workspace/output/report/*-status.txt; do
+                task_name=$(basename "$file" -status.txt)
+                task_status=$(cat "$file")
+                task_details=$(cat "/workspace/output/report/${task_name}-details.txt")
+                report=$(echo "$report" | jq --arg task "$task_name" --arg status "$task_status" --arg details "$task_details" '.tasks += [{"name": $task, "status": $status, "details": $details}]')
+              done
+              echo "Final Report: $report"
+              curl -X POST -H "Content-Type: application/json" -d "$report" https://httpbin.org/post
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+
+    #- name: final-report-status
+    #  taskRef:
+    #    name: report-status
+    #  params:
+    #    - name: stageName
+    #      value: "Maven Build"
+    #    - name: status
+    #      value: "$(tasks.build-app.results.status)"
+    #    - name: details
+    #      value: "$(tasks.build-app.results.details)"
     #- name: notify-completion
     #  taskSpec:
     #    steps:

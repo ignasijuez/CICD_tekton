@@ -26,15 +26,21 @@ spec:
           #echo "No es la hora adecuada, no se ejecuta el paso porque hay mucho tráfico"
           echo "No es la hora adecuada, no se ejecuta el paso porque hay mucho tráfico" > $(results.details.path)
           echo "Failed" > $(results.status.path)
+          echo "Failed" > /workspace/output/report/maven-build-status.txt
+          echo "No es la hora adecuada, no se ejecuta el paso porque hay mucho tráfico" > /workspace/output/report/maven-build-details.txt
           exit 1
         else
           cd $(params.workspacePath)  # Navigate to the cloned repo directory
           if mvn spring-javaformat:apply && mvn move package; then
             echo "Success" > $(results.status.path)
             echo "Build completed successfully" > $(results.details.path)
+            echo "Success" > /workspace/output/report/maven-build-status.txt
+            echo "Build completed successfully" > /workspace/output/report/maven-build-details.txt
           else
             echo "Failed" > $(results.status.path)
             echo "Error during maven build" > $(results.details.path)
+            echo "Failed" > /workspace/output/report/maven-build-status.txt
+            echo "Error during maven build" > /workspace/output/report/maven-build-details.txt
             exit 1
           fi
         fi
