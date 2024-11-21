@@ -38,3 +38,7 @@ spec:
             value: https://github.com/ignasijuez/CICD_tekton.git
           - name: image-reference
             value: juezignasi/tekton-app:latest
+          - name: SONAR_PROJECT_KEY
+            value: ignasijuez_tekton
+          - name: SONAR_ORGANIZATION
+            value: ignasijuez
