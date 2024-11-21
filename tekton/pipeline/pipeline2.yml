@@ -31,7 +31,7 @@ spec:
       params:
         - name: url
           value: $(params.repo-url)
-
+ 
     - name: sonar
       runAfter: ["checkout"]
       taskRef:
