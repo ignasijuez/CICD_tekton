@@ -4,7 +4,7 @@ metadata:
   name: sonar-task
 spec:
   workspaces:
-    - name: output  # This is the shared workspace containing the repo files
+    - name: output  # This is the shared workspace containing the repo files 
   params:
     - name: SONAR_PROJECT_KEY
       type: string
