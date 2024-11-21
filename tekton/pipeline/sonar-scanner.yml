@@ -37,3 +37,15 @@ spec:
           -Dsonar.java.binaries=none \
           -Dsonar.qualitygate.wait=false \
           -X
+
+    - name: extract-task-id
+      image: ubuntu:latest
+      script: |
+        #!/bin/sh
+        if [ ! -f /workspace/output/.scannerwork/report-task.txt ]; then
+          echo "SonarCloud report-task.txt not found!"
+          exit 1
+        fi
+        task_id=$(grep 'ceTaskId' /workspace/output/.scannerwork/report-task.txt | cut -d '=' -f 2)
+        echo "Task ID: $task_id"
+        echo $task_id > /workspace/output/task-id.txt
