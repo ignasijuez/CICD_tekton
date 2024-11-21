@@ -45,8 +45,19 @@ spec:
         - name: output
           workspace: shared-workspace
 
-    - name: build-app
+    - name: dependency-check
       runAfter: ["sonar"]
+      taskRef:
+        name: dependency-check
+      params:
+        - name: workspacePath
+          value: "$(workspaces.output.path)"
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+
+    - name: build-app
+      runAfter: ["dependency-check"]
       taskRef:
         name: maven-build
       params:

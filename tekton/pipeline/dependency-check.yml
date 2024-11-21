@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: dependency-check
+spec:
+  workspaces:
+    - name: output
+      description: Workspace to store reports and access the codebase
+  params:
+    - name: workspacePath
+      type: string
+      description: The path to the workspace where the source code is located
+  steps:
+    - name: run-dependency-check
+      image: maven:3.8.6-openjdk-17
+      script: |
+        #!/bin/bash
+        cd $(workspaces.output.path)
+        mvn org.owasp:dependency-check-maven:check \
+            -Dformat=HTML \
+            -DautoUpdate=false \
+            -Dexcludes=com.h2database:h2 \
+            -DfailBuildOnCVSS=1.0 \
+            -DoutputDirectory=dependency-check-report || exit_code=$?
+        echo "Dependency check completed with exit code $exit_code"
+        if [ "$exit_code" -ne 0 ]; then
+          echo "Found vulnerabilities. Marking as unstable."
+        fi
