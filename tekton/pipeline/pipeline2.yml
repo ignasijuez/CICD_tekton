@@ -32,20 +32,20 @@ spec:
         - name: url
           value: $(params.repo-url)
 
-    - name: sonar
-      taskRef:
-        name: sonar-task
-      params:
-        - name: SONAR_PROJECT_KEY
-          value: $(params.SONAR_PROJECT_KEY)
-        - name: SONAR_ORGANIZATION
-          value: $(params.SONAR_ORGANIZATION)
-      workspaces:
-        - name: output
-          workspace: shared-workspace
+    #- name: sonar
+    #  taskRef:
+    #    name: sonar-task
+    #  params:
+    #    - name: SONAR_PROJECT_KEY
+    #      value: $(params.SONAR_PROJECT_KEY)
+    #    - name: SONAR_ORGANIZATION
+    #      value: $(params.SONAR_ORGANIZATION)
+    #  workspaces:
+    #    - name: output
+    #      workspace: shared-workspace
 
     - name: build-app
-      runAfter: ["sonar"]
+      runAfter: ["checkout"]
       taskRef:
         name: maven-build
       params:
