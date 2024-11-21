@@ -1,0 +1,68 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: check-sonar-status
+spec:
+  workspaces:
+    - name: output
+  steps:
+    - name: check-status
+      image: curlimages/curl:latest
+      env:
+        - name: SONAR_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: sonarcloud-token
+              key: SONAR_TOKEN
+      script: |
+        #!/bin/sh
+        if [ ! -f /workspace/output/task-id.txt ]; then
+          echo "Task ID file not found, skipping SonarCloud status check."
+          exit 1
+        fi
+
+        task_id=$(cat /workspace/output/task-id.txt)
+        echo "Checking status for Task ID: $task_id"
+
+        status=""
+        timeoutMinutes=10
+        pollIntervalSeconds=15
+        elapsedTime=0
+        
+        # Poll SonarCloud until the task is completed
+        while [ "$elapsedTime" -lt $((timeoutMinutes * 60)) ]; do
+          response=$(curl -s -H "Authorization: Bearer $SONAR_TOKEN" "https://sonarcloud.io/api/ce/task?id=$task_id")
+          status=$(echo $response | jq -r '.task.status')
+          echo "SonarCloud task status: $status"
+          
+          if [ "$status" = "SUCCESS" ]; then
+            echo "SonarCloud analysis completed successfully."
+            break
+          elif [ "$status" = "FAILED" ]; then
+            echo "SonarCloud analysis failed!"
+            exit 1
+          fi
+          
+          sleep $pollIntervalSeconds
+          elapsedTime=$((elapsedTime + pollIntervalSeconds))
+        done
+
+        if [ "$status" != "SUCCESS" ]; then
+          echo "SonarCloud analysis did not complete in time!"
+          exit 1
+        fi
+
+        echo "SonarCloud analysis completed. Fetching Quality Gate status..."
+
+        # Check Quality Gate status
+        analysis_id=$(echo $response | jq -r '.task.analysisId')
+        response=$(curl -s -H "Authorization: Bearer $SONAR_TOKEN" "https://sonarcloud.io/api/qualitygates/project_status?analysisId=$analysis_id")
+        quality_gate_status=$(echo $response | jq -r '.projectStatus.status')
+        echo "SonarCloud Quality Gate Status: $quality_gate_status"
+
+        if [ "$quality_gate_status" != "OK" ]; then
+          echo "SonarCloud Quality Gate failed!"
+          exit 1
+        fi
+
+        echo "SonarCloud Quality Gate passed successfully."

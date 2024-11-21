@@ -92,6 +92,14 @@ spec:
         - name: IMAGE
           value: $(params.image-reference)
 
+    - name: check-sonar-results
+      runAfter: ["sonar"]
+      taskRef:
+        name: check-sonar-status
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+
     - name: deploy-mysql
       runAfter: ["build-push"]
       taskRef:
