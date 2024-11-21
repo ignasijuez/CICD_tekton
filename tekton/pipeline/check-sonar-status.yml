@@ -16,6 +16,7 @@ spec:
               key: SONAR_TOKEN
       script: |
         #!/bin/sh
+        apt-get update && apt-get install -y curl jq
         if [ ! -f /workspace/output/task-id.txt ]; then
           echo "Task ID file not found, skipping SonarCloud status check."
           exit 1
