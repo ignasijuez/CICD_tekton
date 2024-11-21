@@ -23,6 +23,10 @@ spec:
               key: SONAR_TOKEN
       script: |
         #!/bin/sh
+        # Depuración: verificar que el código está disponible
+        echo "Contenido del workspace:"
+        ls -la $(workspaces.output.path)
+        cd $(workspaces.output.path)
         sonar-scanner \
           -Dsonar.projectKey=$(params.SONAR_PROJECT_KEY) \
           -Dsonar.organization=$(params.SONAR_ORGANIZATION) \
