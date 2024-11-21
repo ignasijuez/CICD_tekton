@@ -33,6 +33,7 @@ spec:
           value: $(params.repo-url)
 
     - name: sonar
+      runAfter: ["checkout"]
       taskRef:
         name: sonar-task
       params:
@@ -45,7 +46,7 @@ spec:
           workspace: shared-workspace
 
     - name: build-app
-      runAfter: ["checkout"]
+      runAfter: ["sonar"]
       taskRef:
         name: maven-build
       params:
