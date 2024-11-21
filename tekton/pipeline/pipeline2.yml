@@ -139,4 +139,3 @@ spec:
     #            -d '{"pipeline": "ci-pipeline", "status": "$(tasks.check-out.status)", "details": "Pipeline completed"}' \
     #            https://httpbin.org/post
                 
-                
