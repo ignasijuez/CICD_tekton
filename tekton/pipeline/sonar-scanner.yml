@@ -1,0 +1,33 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: sonar-task
+spec:
+  params:
+    - name: SONAR_PROJECT_KEY
+      type: string
+      description: SonarCloud Project Key
+    - name: SONAR_ORGANIZATION
+      type: string
+      description: SonarCloud Organization
+  steps:
+    - name: run-sonar-scanner
+      image: sonarsource/sonar-scanner-cli:latest
+      env:
+        - name: SONAR_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: sonarcloud-token
+              key: SONAR_TOKEN
+      script: |
+        #!/bin/sh
+        sonar-scanner \
+          -Dsonar.projectKey=$(params.SONAR_PROJECT_KEY) \
+          -Dsonar.organization=$(params.SONAR_ORGANIZATION) \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=$SONAR_TOKEN \
+          -Dsonar.sources=src \
+          -Dsonar.exclusions=**/*.java \
+          -Dsonar.java.binaries=none \
+          -Dsonar.qualitygate.wait=false \
+          -X

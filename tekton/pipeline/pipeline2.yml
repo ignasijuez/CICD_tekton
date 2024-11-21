@@ -11,6 +11,10 @@ spec:
       description: The git repo URL to clone from
     - name: image-reference
       type: string
+    - name: SONAR_PROJECT_KEY
+      type: string
+    - name: SONAR_ORGANIZATION
+      type: string
   workspaces:
     - name: shared-workspace
       description: |
@@ -28,8 +32,20 @@ spec:
         - name: url
           value: $(params.repo-url)
 
+    - name: sonar
+      taskRef:
+        name: sonar-task
+      params:
+        - name: SONAR_PROJECT_KEY
+          value: $(params.SONAR_PROJECT_KEY)
+        - name: SONAR_ORGANIZATION
+          value: $(params.SONAR_ORGANIZATION)
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+
     - name: build-app
-      runAfter: ["checkout"]
+      runAfter: ["sonar"]
       taskRef:
         name: maven-build
       params:
@@ -40,7 +56,7 @@ spec:
           workspace: shared-workspace
 
     - name: report-status
-      runAfter: [build-app]
+      runAfter: ["build-app"]
       taskRef:
         name: report-status
       params:
