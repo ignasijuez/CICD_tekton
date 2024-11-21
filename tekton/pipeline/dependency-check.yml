@@ -12,7 +12,7 @@ spec:
       description: The path to the workspace where the source code is located
   steps:
     - name: run-dependency-check
-      image: maven:3.8.6-openjdk-17
+      image: maven:3.9.3-eclipse-temurin-17
       script: |
         #!/bin/bash
         cd $(workspaces.output.path)
