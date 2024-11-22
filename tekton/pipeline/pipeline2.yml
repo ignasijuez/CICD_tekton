@@ -93,7 +93,7 @@ spec:
           value: $(params.image-reference)
 
     - name: check-sonar-results
-      runAfter: ["build-push"]
+      runAfter: ["build-push", "sonar"]
       taskRef:
         name: check-sonar-status
       workspaces:
