@@ -39,11 +39,11 @@ spec:
           -X
       resources:
         requests:
-          memory: "256Mi" # Valid format for memory
-          cpu: "500m"     # Valid format for CPU
+          memory: "512Mi"
+          cpu: "1"
         limits:
-          memory: "512Mi" # Valid format for memory
-          cpu: "1"        # Valid format for CPU
+          memory: "1Gi"
+          cpu: "2"
 
     - name: extract-task-id
       image: ubuntu:latest
