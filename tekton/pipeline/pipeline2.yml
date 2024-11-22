@@ -46,7 +46,7 @@ spec:
           workspace: shared-workspace
 
     - name: dependency-check
-      runAfter: ["checkout"]
+      runAfter: ["sonar"]
       taskRef:
         name: dependency-check
       params:
