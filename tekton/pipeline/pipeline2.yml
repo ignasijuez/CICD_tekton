@@ -57,7 +57,7 @@ spec:
           workspace: shared-workspace
 
     - name: build-app
-      runAfter: ["dependency-check"]
+      runAfter: ["checkout"]
       taskRef:
         name: maven-build
       params:
