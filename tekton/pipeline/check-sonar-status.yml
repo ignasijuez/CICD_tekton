@@ -7,7 +7,7 @@ spec:
     - name: output
   steps:
     - name: check-status
-      image: curlimages/curl:latest
+      image: ubuntu:latest
       env:
         - name: SONAR_TOKEN
           valueFrom:
