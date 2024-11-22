@@ -26,6 +26,13 @@ spec:
         if [ "$exit_code" -ne 0 ]; then
           echo "Found vulnerabilities. Marking as unstable."
         fi
+      resources:
+        requests:
+          memory: "256Mi" # Valid format for memory
+          cpu: "500m"     # Valid format for CPU
+        limits:
+          memory: "512Mi" # Valid format for memory
+          cpu: "1"        # Valid format for CPU
       volumeMounts:
         - name: maven-repo-cache
           mountPath: /root/.m2/repository

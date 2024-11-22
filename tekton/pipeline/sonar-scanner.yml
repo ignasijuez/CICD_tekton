@@ -37,6 +37,13 @@ spec:
           -Dsonar.java.binaries=none \
           -Dsonar.qualitygate.wait=false \
           -X
+      resources:
+        requests:
+          memory: "256Mi" # Valid format for memory
+          cpu: "500m"     # Valid format for CPU
+        limits:
+          memory: "512Mi" # Valid format for memory
+          cpu: "1"        # Valid format for CPU
 
     - name: extract-task-id
       image: ubuntu:latest
@@ -49,3 +56,4 @@ spec:
         task_id=$(grep 'ceTaskId' /workspace/output/.scannerwork/report-task.txt | cut -d '=' -f 2)
         echo "Task ID: $task_id"
         echo $task_id > /workspace/output/task-id.txt
+      
