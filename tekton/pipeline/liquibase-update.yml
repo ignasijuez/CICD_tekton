@@ -6,62 +6,18 @@ spec:
   workspaces:
     - name: output
   steps:
-    - name: create-properties
+    - name: overwrite-example-changelog
       image: alpine:latest
       script: |
         #!/bin/sh
-        echo "$(workspaces.output.path)"
-        echo "url=jdbc:mysql://tekton-mysql-service:3306/petclinic" > $(workspaces.output.path)/liquibase.properties
-        echo "username=petclinic" >> $(workspaces.output.path)/liquibase.properties
-        echo "password=petclinic" >> $(workspaces.output.path)/liquibase.properties
-        echo "driver=com.mysql.cj.jdbc.Driver" >> $(workspaces.output.path)/liquibase.properties
-        echo "changeLogFile=changelog.xml" >> $(workspaces.output.path)/liquibase.properties
-        
-    - name: debug-files
-      image: alpine:latest
-      script: |
-        #!/bin/sh
-        echo "Verificando archivos en el directorio:"
-        ls -R $(workspaces.output.path)/src/main/resources/liquibase
-
-    - name: debug-permissions
-      image: alpine:latest
-      script: |
-        #!/bin/sh
-        echo "Verificando permisos del changelog:"
-        ls -l $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml
-    
-    - name: move-changelog
-      image: alpine:latest
-      script: |
-        #!/bin/sh
-        mv $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml $(workspaces.output.path)/
+        cp $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml /liquibase/examples/xml/example-changelog.xml
 
     - name: run-liquibase
       image: liquibase/liquibase:latest
       script: |
         #!/bin/sh
-        
-        echo "------------------------------"
-        echo "------------------------------"
-        echo "pwd: "
-        pwd
-        echo "------------------------------"
-        echo "------------------------------"
-        echo "ls -R"
-        ls -R
-        echo "------------------------------"
-        echo "------------------------------"
-        echo "example sql"
-        cat /liquibase/examples/sql/liquibase.properties
-        echo "------------------------------"
-        echo "------------------------------"
-
-        #!/bin/sh
-        echo "### Mostrando contenido del changelog ###"
-        cat /liquibase/examples/xml/example-changelog.xml
         echo "### Verificando el changelog ###"
         liquibase \
-          --defaultsFile=$(workspaces.output.path)/liquibase.properties \
+          --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
           --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
           update
