@@ -10,8 +10,7 @@ spec:
       image: liquibase/liquibase:latest
       script: |
         #!/bin/sh
-        
-        ls -R $(workspaces.output.path)
+        ls -R $(workspaces.output.path)/src/main/resources
 
         liquibase \
         --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
