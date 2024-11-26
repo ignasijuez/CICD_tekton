@@ -16,3 +16,8 @@ spec:
           --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
           --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
           update
+
+    - name: update-petclinic-service
+      image: debian:latest
+      script: |
+        kubectl delete pod -l app=tekton-petclinic-pod
