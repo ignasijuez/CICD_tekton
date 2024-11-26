@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: liquibase-update
+spec:
+  workspaces:
+    - name: output
+  steps:
+    - name: run-liquibase
+      image: liquibase/liquibase:latest
+      script: |
+        #!/bin/sh
+        liquibase \
+        --defaultsFile=$(workspaces.output.path)src/main/resources/liquibase.properties \
+        --classpath=$(workspaces.output.path)src/main/resources/mysql-connector-j-9.1.0.jar \
+        --changeLogFile=$(workspaces.output.path)src/main/resources/liquibase/changelog.xml \
+        update
