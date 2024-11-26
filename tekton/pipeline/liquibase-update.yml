@@ -25,4 +25,5 @@ spec:
         --logLevel=debug \
         --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
         --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
+        --searchPath=$(workspaces.output.path)/src/main/resources \
         update
