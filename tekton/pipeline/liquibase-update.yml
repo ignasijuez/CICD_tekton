@@ -7,40 +7,13 @@ spec:
     - name: output
   steps:
     - name: run-liquibase
-      image: liquibase/liquibase:latest
+      image: alpine:latest
       script: |
         #!/bin/sh
-        echo "------------------------------"
-        ls -R $(workspaces.output.path)/src/main/resources
-        echo "------------------------------"
-        echo "------------------------------"
-        echo "pwd: "
-        pwd
-        echo "------------------------------"
-        echo "------------------------------"
-        echo "copy:"
-        cp /workspace/output/src/main/resources/liquibase/changelog.xml /liquibase/changelog.xml
-        echo "check:"
+        apt install liquibase
 
-        
-        echo "Verifying changelog file:"
-        if [ -f "$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml" ]; then
-          echo "Found changelog.xml at $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml"
-        else
-          echo "changelog.xml not found!"
-          exit 1
-        fi
-
-        echo "------------------------------"
-        echo "------------------------------"
-        echo "copy 2"
-        cp /workspace/output/src/main/resources/liquibase.properties /liquibase/liquibase.properties
-        ls -la
-        echo "------------------------------"
-        echo "------------------------------"
-        echo "content changelog"
-        cat /liquibase/changelog.xml
-        echo "------------------------------"
-        echo "------------------------------"
-
-        liquibase --defaultsFile=/liquibase/liquibase.properties --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar --changeLogFile=/liquibase/changelog.xml --searchPath=/liquibase/ update
+        liquibase \
+        --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
+        --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
+        --changeLogFile=$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml \ 
+        update
