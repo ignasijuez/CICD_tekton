@@ -18,6 +18,6 @@ spec:
           update
 
     - name: update-petclinic-service
-      image: debian:latest
+      image: bitnami/kubectl:latest
       script: |
         kubectl delete pod -l app=tekton-petclinic-pod
