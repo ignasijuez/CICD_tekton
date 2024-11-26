@@ -12,6 +12,7 @@ spec:
         #!/bin/sh
         ls -R $(workspaces.output.path)/src/main/resources
         ls -l /workspace/output/src/main/resources/liquibase/changelog.xml
+        chmod 777 /workspace/output/src/main/resources/liquibase/changelog.xml
         echo "Verifying changelog file:"
         if [ -f "$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml" ]; then
           echo "Found changelog.xml at $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml"
