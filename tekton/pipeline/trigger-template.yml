@@ -18,9 +18,6 @@ spec:
       spec:
         pipelineRef:
           name: ci-pipeline
-            #  podTemplate:
-            #securityContext:
-            #fsGroup: 65532
         ttlSecondsAfterFinished: 3600  # Tiempo (s) que se conservará el pod tras finalizar
         workspaces:
           - name: shared-workspace
