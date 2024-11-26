@@ -6,16 +6,11 @@ spec:
   workspaces:
     - name: output
   steps:
-    - name: overwrite-example-changelog
-      image: alpine:latest
-      script: |
-        #!/bin/sh
-        cp $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml /liquibase/examples/xml/example-changelog.xml
-
     - name: run-liquibase
       image: liquibase/liquibase:latest
       script: |
         #!/bin/sh
+        cp $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml /liquibase/examples/xml/example-changelog.xml
         echo "### Verificando el changelog ###"
         liquibase \
           --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
