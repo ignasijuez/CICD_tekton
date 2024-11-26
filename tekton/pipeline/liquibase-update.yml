@@ -15,7 +15,7 @@ spec:
         echo "username=petclinic" >> $(workspaces.output.path)/liquibase.properties
         echo "password=petclinic" >> $(workspaces.output.path)/liquibase.properties
         echo "driver=com.mysql.cj.jdbc.Driver" >> $(workspaces.output.path)/liquibase.properties
-        echo "changeLogFile=/workspace/output/src/main/resources/liquibase/changelog.xml" >> $(workspaces.output.path)/liquibase.properties
+        echo "changeLogFile=changelog.xml" >> $(workspaces.output.path)/liquibase.properties
         
     - name: debug-files
       image: alpine:latest
@@ -30,6 +30,12 @@ spec:
         #!/bin/sh
         echo "Verificando permisos del changelog:"
         ls -l $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml
+    
+    - name: move-changelog
+      image: alpine:latest
+      script: |
+        #!/bin/sh
+        mv $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml $(workspaces.output.path)/
 
     - name: run-liquibase
       image: liquibase/liquibase:latest
