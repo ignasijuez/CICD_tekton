@@ -35,11 +35,13 @@ spec:
         fi
 
         echo "------------------------------"
+        echo "copy 2"
+        cp /workspace/output/src/main/resources/liquibase.properties /liquibase/liquibase.properties
+        ls -la
         echo "------------------------------"
 
         liquibase \
-        ##--logLevel=debug \
-        --defaults-file=$(workspaces.output.path)/src/main/resources/liquibase.properties \
+        --defaults-file=/liquibase/liquibase.properties \
         --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
         --changelog-file=/liquibase/changelog.xml \ 
         update
