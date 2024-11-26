@@ -21,10 +21,15 @@ spec:
         ls -R
         echo "------------------------------"
         echo "------------------------------"
+        echo "example sql"
+        cat /liquibase/examples/sql/liquibase.properties
+        echo "------------------------------"
+        echo "------------------------------"
 
+        #!/bin/sh
+        echo "### Mostrando contenido del changelog ###"
+        cat /liquibase/examples/xml/example-changelog.xml
+        echo "### Verificando el changelog ###"
         liquibase \
-          --url=jdbc:h2:mem:testdb \
-          --changeLogFile=/liquibase/examples/mysql/changelog.xml \
-          --username=sa \
-          --password='' \
-          update
+          --defaultsFile=/liquibase/examples/xml/liquibase.properties \
+          updateSQL
