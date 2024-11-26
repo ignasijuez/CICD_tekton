@@ -7,7 +7,7 @@ spec:
     - name: output
   steps:
     - name: run-liquibase
-      image: liquibase/liquibase:4.23.2
+      image: liquibase/liquibase:latest
       script: |
         #!/bin/sh
         ls -R $(workspaces.output.path)/src/main/resources
@@ -24,8 +24,8 @@ spec:
         echo "HELP"
         liquibase update --help
         echo "------------------------------"
-        
-
+        liquibase --version
+        echo "------------------------------"
         echo "Verifying changelog file:"
         if [ -f "$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml" ]; then
           echo "Found changelog.xml at $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml"
@@ -39,7 +39,7 @@ spec:
 
         liquibase \
         ##--logLevel=debug \
-        --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
+        --defaults-file=$(workspaces.output.path)/src/main/resources/liquibase.properties \
         --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
-        --changeLogFile=/liquibase/changelog.xml \ 
+        --changelog-file=/liquibase/changelog.xml \ 
         update
