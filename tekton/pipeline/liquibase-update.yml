@@ -10,22 +10,20 @@ spec:
       image: liquibase/liquibase:latest
       script: |
         #!/bin/sh
+        echo "------------------------------"
         ls -R $(workspaces.output.path)/src/main/resources
+        echo "------------------------------"
+        echo "------------------------------"
         echo "pwd: "
         pwd
-        
+        echo "------------------------------"
+        echo "------------------------------"
         echo "copy"
-        echo "------------------------------"
         cp /workspace/output/src/main/resources/liquibase/changelog.xml /liquibase/changelog.xml
-        echo "------------------------------"
         echo "check"
         ls /liquibase
-        echo "------------------------------"
-        echo "HELP"
-        liquibase update --help
-        echo "------------------------------"
-        liquibase --version
-        echo "------------------------------"
+
+        
         echo "Verifying changelog file:"
         if [ -f "$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml" ]; then
           echo "Found changelog.xml at $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml"
@@ -35,9 +33,11 @@ spec:
         fi
 
         echo "------------------------------"
+        echo "------------------------------"
         echo "copy 2"
         cp /workspace/output/src/main/resources/liquibase.properties /liquibase/liquibase.properties
         ls -la
+        echo "------------------------------"
         echo "------------------------------"
 
         liquibase \
