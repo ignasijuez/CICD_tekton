@@ -10,10 +10,10 @@ spec:
       image: liquibase/liquibase:latest
       script: |
         #!/bin/sh
-        echo $(workspaces.output.path)
-        ls -la $(workspaces.output.path)
+        
+        ls -R $(workspaces.output.path)
+
         liquibase \
         --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
         --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
-        --changeLogFile=$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml \
         update
