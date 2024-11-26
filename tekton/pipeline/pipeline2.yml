@@ -113,7 +113,7 @@ spec:
       taskRef:
         name: liquibase-update
       workspaces:
-        - name: shared-workspace
+        - name: output
           workspace: shared-workspace
 
     - name: deploy-app
