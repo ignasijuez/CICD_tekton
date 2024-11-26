@@ -17,6 +17,20 @@ spec:
         echo "driver=com.mysql.cj.jdbc.Driver" >> $(workspaces.output.path)/liquibase.properties
         echo "changeLogFile=/workspace/output/src/main/resources/liquibase/changelog.xml" >> $(workspaces.output.path)/liquibase.properties
         
+    - name: debug-files
+      image: alpine:latest
+      script: |
+        #!/bin/sh
+        echo "Verificando archivos en el directorio:"
+        ls -R $(workspaces.output.path)/src/main/resources/liquibase
+
+    - name: debug-permissions
+      image: alpine:latest
+      script: |
+        #!/bin/sh
+        echo "Verificando permisos del changelog:"
+        ls -l $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml
+
     - name: run-liquibase
       image: liquibase/liquibase:latest
       script: |
