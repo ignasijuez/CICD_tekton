@@ -11,7 +11,7 @@ spec:
       script: |
         #!/bin/sh
         ls -R $(workspaces.output.path)/src/main/resources
-        
+        pwd
         
         echo "Verifying changelog file:"
         if [ -f "$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml" ]; then
@@ -25,5 +25,5 @@ spec:
         --logLevel=debug \
         --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
         --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
-        --searchPath=$(workspaces.output.path)/src/main/resources \
+        --changeLogFile=/workspace/output/src/main/resources/liquibase/changelog.xml \
         update
