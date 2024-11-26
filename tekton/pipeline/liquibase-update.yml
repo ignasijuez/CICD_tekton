@@ -29,8 +29,8 @@ spec:
         fi
 
         liquibase \
-        --logLevel=debug \
+        ##--logLevel=debug \
         --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
         --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
-        --changeLogFile=/workspace/output/src/main/resources/liquibase/changelog.xml \
+        --changeLogFile=/liquibase/changelog.xml \
         update
