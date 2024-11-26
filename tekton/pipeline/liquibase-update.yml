@@ -6,6 +6,16 @@ spec:
   workspaces:
     - name: output
   steps:
+    - name: create-properties
+      image: alpine:latest
+      script: |
+        #!/bin/sh
+        echo "url=jdbc:mysql://<mysql-host>:3306/<database-name>" > $(workspaces.output.path)/liquibase.properties
+        echo "username=<mysql-username>" >> $(workspaces.output.path)/liquibase.properties
+        echo "password=<mysql-password>" >> $(workspaces.output.path)/liquibase.properties
+        echo "driver=com.mysql.cj.jdbc.Driver" >> $(workspaces.output.path)/liquibase.properties
+        echo "changeLogFile=$(workspaces.output.path)/examples/xml/example-changelog.xml" >> $(workspaces.output.path)/liquibase.properties
+        
     - name: run-liquibase
       image: liquibase/liquibase:latest
       script: |
@@ -31,5 +41,6 @@ spec:
         cat /liquibase/examples/xml/example-changelog.xml
         echo "### Verificando el changelog ###"
         liquibase \
-          --defaultsFile=/liquibase/examples/xml/liquibase.properties \
-          updateSQL
+          --defaultsFile=$(workspaces.output.path)/liquibase.properties \
+          --classpath=$(workspaces.output.path)/mysql-connector-j-8.0.32.jar \
+          update
