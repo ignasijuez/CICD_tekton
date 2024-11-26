@@ -21,7 +21,7 @@ spec:
             #  podTemplate:
             #securityContext:
             #fsGroup: 65532
-          ttlSecondsAfterFinished: 200  # Tiempo (s) que se conservará el pod tras finalizar
+          #ttlSecondsAfterFinished: 200  # Tiempo (s) que se conservará el pod tras finalizar
         workspaces:
           - name: shared-workspace
             volumeClaimTemplate:
