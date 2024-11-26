@@ -15,10 +15,16 @@ spec:
         pwd
         
         echo "copy"
+        echo "------------------------------"
         cp /workspace/output/src/main/resources/liquibase/changelog.xml /liquibase/changelog.xml
+        echo "------------------------------"
         echo "check"
         ls /liquibase
         echo "------------------------------"
+        echo "HELP"
+        liquibase update --help
+        echo "------------------------------"
+        
 
         echo "Verifying changelog file:"
         if [ -f "$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml" ]; then
@@ -27,6 +33,9 @@ spec:
           echo "changelog.xml not found!"
           exit 1
         fi
+
+        echo "------------------------------"
+        echo "------------------------------"
 
         liquibase \
         ##--logLevel=debug \
