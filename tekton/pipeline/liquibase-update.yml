@@ -41,7 +41,7 @@ spec:
         echo "------------------------------"
 
         liquibase \
-        --defaults-file=/liquibase/liquibase.properties \
+        --defaultsFile=/liquibase/liquibase.properties \
         --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
-        --changelog-file=/liquibase/changelog.xml \ 
+        --changeLogFile=/liquibase/changelog.xml \ 
         update
