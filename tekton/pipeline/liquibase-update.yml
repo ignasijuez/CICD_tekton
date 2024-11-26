@@ -10,4 +10,21 @@ spec:
       image: liquibase/liquibase:latest
       script: |
         #!/bin/sh
-        liquibase --version
+        
+        echo "------------------------------"
+        echo "------------------------------"
+        echo "pwd: "
+        pwd
+        echo "------------------------------"
+        echo "------------------------------"
+        echo "ls -R"
+        ls -R
+        echo "------------------------------"
+        echo "------------------------------"
+
+        liquibase \
+          --url=jdbc:h2:mem:testdb \
+          --changeLogFile=/liquibase/examples/mysql/changelog.xml \
+          --username=sa \
+          --password='' \
+          update
