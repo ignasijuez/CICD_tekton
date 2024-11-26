@@ -7,7 +7,7 @@ spec:
     - name: output
   steps:
     - name: run-liquibase
-      image: liquibase/liquibase:v4.30
+      image: liquibase/liquibase:latest
       script: |
         #!/bin/sh
         ls -R $(workspaces.output.path)/src/main/resources
