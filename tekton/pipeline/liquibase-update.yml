@@ -14,7 +14,7 @@ spec:
         echo "username=petclinic" >> $(workspaces.output.path)/liquibase.properties
         echo "password=petclinic" >> $(workspaces.output.path)/liquibase.properties
         echo "driver=com.mysql.cj.jdbc.Driver" >> $(workspaces.output.path)/liquibase.properties
-        echo "changeLogFile=$(workspaces.output.path)/examples/xml/example-changelog.xml" >> $(workspaces.output.path)/liquibase.properties
+        echo "changeLogFile=./examples/xml/example-changelog.xml" >> $(workspaces.output.path)/liquibase.properties
         
     - name: run-liquibase
       image: liquibase/liquibase:latest
