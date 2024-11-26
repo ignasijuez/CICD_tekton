@@ -11,8 +11,15 @@ spec:
       script: |
         #!/bin/sh
         ls -R $(workspaces.output.path)/src/main/resources
+        echo "pwd: "
         pwd
         
+        echo "copy"
+        cp /workspace/output/src/main/resources/liquibase/changelog.xml /liquibase/changelog.xml
+        echo "check"
+        ls /liquibase
+        echo "------------------------------"
+
         echo "Verifying changelog file:"
         if [ -f "$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml" ]; then
           echo "Found changelog.xml at $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml"
