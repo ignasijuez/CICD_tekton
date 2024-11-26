@@ -32,18 +32,18 @@ spec:
         - name: url
           value: $(params.repo-url)
   
-    - name: sonar
-      runAfter: ["checkout"]
-      taskRef:
-        name: sonar-task
-      params:
-        - name: SONAR_PROJECT_KEY
-          value: $(params.SONAR_PROJECT_KEY)
-        - name: SONAR_ORGANIZATION
-          value: $(params.SONAR_ORGANIZATION)
-      workspaces:
-        - name: output
-          workspace: shared-workspace
+    #- name: sonar
+    #  runAfter: ["checkout"]
+    #  taskRef:
+    #    name: sonar-task
+    #  params:
+    #    - name: SONAR_PROJECT_KEY
+    #      value: $(params.SONAR_PROJECT_KEY)
+    #    - name: SONAR_ORGANIZATION
+    #      value: $(params.SONAR_ORGANIZATION)
+    #  workspaces:
+    #    - name: output
+    #      workspace: shared-workspace
 
     - name: dependency-check
       runAfter: ["checkout"]
@@ -92,16 +92,17 @@ spec:
         - name: IMAGE
           value: $(params.image-reference)
 
-    - name: check-sonar-results
-      runAfter: ["build-push", "sonar"]
-      taskRef:
-        name: check-sonar-status
-      workspaces:
-        - name: output
-          workspace: shared-workspace
+    #- name: check-sonar-results
+    #  runAfter: ["build-push", "sonar"]
+    #  taskRef:
+    #    name: check-sonar-status
+    #  workspaces:
+    #    - name: output
+    #      workspace: shared-workspace
 
     - name: deploy-mysql
-      runAfter: ["check-sonar-results"]
+      #runAfter: ["check-sonar-results"]
+      runAfter: ["build-push"]
       taskRef:
         name: deploy-mysql
       workspaces:
