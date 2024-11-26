@@ -7,24 +7,7 @@ spec:
     - name: output
   steps:
     - name: run-liquibase
-      image: alpine:latest
+      image: liquibase/liquibase:latest
       script: |
         #!/bin/sh
-
-        # Instalar dependencias y Liquibase
-        apt-get update && apt-get install -y \
-          openjdk-17-jdk \
-          curl \
-          unzip
-
-        # Descargar e instalar Liquibase
-        curl -Lo /tmp/liquibase.zip https://github.com/liquibase/liquibase/releases/download/v4.23.2/liquibase-4.23.2.zip
-        unzip /tmp/liquibase.zip -d /opt/liquibase
-        export PATH="/opt/liquibase:$PATH"
-
-        # Ejecutar Liquibase
-        /opt/liquibase/liquibase \
-          --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
-          --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
-          --changeLogFile=$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml \
-          update
+        liquibase --version
