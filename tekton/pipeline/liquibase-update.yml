@@ -42,5 +42,5 @@ spec:
         echo "### Verificando el changelog ###"
         liquibase \
           --defaultsFile=$(workspaces.output.path)/liquibase.properties \
-          --classpath=$(workspaces.output.path)/mysql-connector-j-8.0.32.jar \
+          --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
           update
