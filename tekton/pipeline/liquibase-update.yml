@@ -15,4 +15,5 @@ spec:
         liquibase \
         --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
         --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \
+        --changeLogFile=$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml
         update
