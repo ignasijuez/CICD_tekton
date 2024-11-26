@@ -18,10 +18,9 @@ spec:
         pwd
         echo "------------------------------"
         echo "------------------------------"
-        echo "copy"
+        echo "copy:"
         cp /workspace/output/src/main/resources/liquibase/changelog.xml /liquibase/changelog.xml
-        echo "check"
-        ls /liquibase
+        echo "check:"
 
         
         echo "Verifying changelog file:"
@@ -39,5 +38,9 @@ spec:
         ls -la
         echo "------------------------------"
         echo "------------------------------"
+        echo "content changelog"
+        cat /liquibase/changelog.xml
+        echo "------------------------------"
+        echo "------------------------------"
 
-        liquibase --defaultsFile=/liquibase/liquibase.properties --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar --changeLogFile=/liquibase/changelog.xml update
+        liquibase --defaultsFile=/liquibase/liquibase.properties --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar --changeLogFile=/liquibase/changelog.xml --searchPath=/liquibase/ update
