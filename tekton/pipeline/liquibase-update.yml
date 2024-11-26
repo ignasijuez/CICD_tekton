@@ -12,6 +12,14 @@ spec:
         #!/bin/sh
         ls -R $(workspaces.output.path)/src/main/resources
 
+        echo "Verifying changelog file:"
+        if [ -f "$(workspaces.output.path)/src/main/resources/liquibase/changelog.xml" ]; then
+          echo "Found changelog.xml at $(workspaces.output.path)/src/main/resources/liquibase/changelog.xml"
+        else
+          echo "changelog.xml not found!"
+          exit 1
+        fi
+
         liquibase \
         --defaultsFile=$(workspaces.output.path)/src/main/resources/liquibase.properties \
         --classpath=$(workspaces.output.path)/src/main/resources/mysql-connector-j-9.1.0.jar \

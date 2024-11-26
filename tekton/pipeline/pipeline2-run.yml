@@ -3,6 +3,12 @@ kind: PipelineRun
 metadata:
   name: ci-pipeline-run
 spec:
+  podTemplate:
+    metadata:
+      annotations:
+        tekton.dev/podReady: "true"
+    spec:
+      ttlSecondsAfterFinished: 3600  # Tiempo (s) que se conservará el pod tras finalizar
   pipelineRef:
     name: ci-pipeline
       #  podTemplate:
