@@ -18,7 +18,7 @@ spec:
       spec:
         pipelineRef:
           name: ci-pipeline
-        ttlSecondsAfterFinished: 3600  # Tiempo (s) que se conservará el pod tras finalizar
+        #ttlSecondsAfterFinished: 3600  # Tiempo (s) que se conservará el pod tras finalizar
         workspaces:
           - name: shared-workspace
             volumeClaimTemplate:
