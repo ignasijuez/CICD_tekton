@@ -33,17 +33,18 @@ spec:
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=$SONAR_TOKEN \
           -Dsonar.sources=src \
-          -Dsonar.exclusions=**/*.java \
+          -Dsonar.exclusions=**/test/**,**/*.java,**/*.scss \
           -Dsonar.java.binaries=none \
           -Dsonar.qualitygate.wait=false \
           -X
-      resources:
-        requests:
-          memory: "1Gi"
-          cpu: "500m"
-        limits:
-          memory: "2Gi"
-          cpu: "2"
+      # -Dsonar.exclusions=**/*.java \
+      #resources:
+      #  requests:
+      #    memory: "1Gi"
+      #    cpu: "500m"
+      #  limits:
+      #    memory: "2Gi"
+      #    cpu: "2"
 
     - name: extract-task-id
       image: ubuntu:latest
