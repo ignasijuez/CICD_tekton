@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: sleep-task
+spec:
+  steps:
+    - name: sleep
+      image: alpine
+      script: |
+        #!/bin/sh
+        echo "Simulating push to Docker Hub..."
+        sleep 120
+        echo "Push simulation complete."
