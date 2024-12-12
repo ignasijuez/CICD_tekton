@@ -57,4 +57,3 @@ spec:
         task_id=$(grep 'ceTaskId' /workspace/output/.scannerwork/report-task.txt | cut -d '=' -f 2)
         echo "Task ID: $task_id"
         echo $task_id > /workspace/output/task-id.txt
-      
