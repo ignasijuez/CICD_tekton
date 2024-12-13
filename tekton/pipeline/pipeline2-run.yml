@@ -3,10 +3,7 @@ kind: PipelineRun
 metadata:
   name: ci-pipeline-run
   annotations:
-    tekton.dev/pod-template: |
-      metadata:
-        annotations:
-          tekton.dev/garbage-collect-on-completion: "true" # Habilita la eliminación de pods
+    tekton.dev/garbage-collect-on-completion: "true" # Habilita la eliminación de pods
 spec:      
   pipelineRef:
     name: ci-pipeline
