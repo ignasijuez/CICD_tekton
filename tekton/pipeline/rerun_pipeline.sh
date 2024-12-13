@@ -13,4 +13,3 @@ kubectl apply -f pipeline2-run.yml
 
 # Follow the logs
 tkn pipelinerun logs ci-pipeline-run --follow
-
