@@ -16,6 +16,10 @@ spec:
   workspaces:
     - name: shared-workspace
       volumeClaimTemplate:
+        metadata:
+          name: build-workspace-pvc
+          annotations:
+            tekton.dev/volume-delete: "true"
         spec:
           accessModes:
           - ReadWriteOnce
