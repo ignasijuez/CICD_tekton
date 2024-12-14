@@ -18,7 +18,7 @@ spec:
         cd $(workspaces.output.path)
         mvn org.owasp:dependency-check-maven:check \
             -Dformat=HTML \
-            -DautoUpdate=true \
+            -DautoUpdate=false \
             -Dexcludes=com.h2database:h2 \
             -DfailBuildOnCVSS=1.0 \
             -DoutputDirectory=dependency-check-report || exit_code=$?
