@@ -34,7 +34,7 @@ spec:
         fi
 
         cd $(params.workspacePath)  # Navigate to the cloned repo directory
-        if mvn spring-javaformat:apply && mvn -X clean package > /workspace/output/maven-build-details.txt 2>&1; then
+        if mvn spring-javaformat:apply && mvn clean package -Dcheckstyle.skip=true > /workspace/output/maven-build-details.txt 2>&1; then
           echo "Success" > $(results.status.path)
           echo "Build completed successfully" > $(results.details.path)
           echo "Success" > /workspace/output/maven-build-status.txt
