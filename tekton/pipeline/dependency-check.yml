@@ -18,7 +18,7 @@ spec:
         cd $(workspaces.output.path)
         mvn org.owasp:dependency-check-maven:check \
             -Dformat=HTML \
-            -DautoUpdate=false \
+            -DautoUpdate=true \
             -Dexcludes=com.h2database:h2 \
             -DfailBuildOnCVSS=1.0 \
             -DoutputDirectory=dependency-check-report || exit_code=$?
@@ -28,13 +28,13 @@ spec:
           echo "      UNSTABLE: Found vulnerabilities.      "
           echo "--------------------------------------------"
         fi
-      resources:
-        requests:
-          memory: "256Mi" # Valid format for memory
-          cpu: "500m"     # Valid format for CPU
-        limits:
-          memory: "512Mi" # Valid format for memory
-          cpu: "1"        # Valid format for CPU
+      #resources:
+      #  requests:
+      #    memory: "256Mi" # Valid format for memory
+      #    cpu: "500m"     # Valid format for CPU
+      #  limits:
+      #    memory: "512Mi" # Valid format for memory
+      #    cpu: "1"        # Valid format for CPU
       volumeMounts:
         - name: maven-repo-cache
           mountPath: /root/.m2/repository
