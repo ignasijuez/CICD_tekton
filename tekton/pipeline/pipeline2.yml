@@ -108,7 +108,7 @@ spec:
           workspace: shared-workspace
 
     - name: deploy-mysql
-      runAfter: ["check-sonar-results"]
+      runAfter: ["check-sonar-results", "dependency-check"]
       taskRef:
         name: deploy-mysql
       workspaces:
