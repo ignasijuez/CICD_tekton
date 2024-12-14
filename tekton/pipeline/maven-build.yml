@@ -20,6 +20,8 @@ spec:
       image: maven:3.8.7-eclipse-temurin-17
       script: |
         #!/usr/bin/env sh
+        ls -la
+        set -x
         currentHour=$(date +%H)
         echo "La hora es: "$currentHour""
         if [ "$currentHour" -ge 2 ] && [ "$currentHour" -lt 4 ]; then
