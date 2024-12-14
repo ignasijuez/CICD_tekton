@@ -138,17 +138,37 @@ spec:
           - name: consolidate-report
             image: ubuntu:latest
             script: |
+              # Instalar las herramientas necesarias
               apt-get update && apt-get install -y curl jq
-              # Compilar el reporte final leyendo los archivos del directorio report
-              report="{\"tasks\": []}"
+              
+              # Inicializar archivo temporal para el reporte
+              echo '{"tasks": []}' > /workspace/output/final-report.json
+
+              # Iterar sobre los archivos y actualizar el reporte
               for file in /workspace/output/*-status.txt; do
                 task_name=$(basename "$file" -status.txt)
                 task_status=$(cat "$file")
-                task_details=$(cat "/workspace/output/${task_name}-details.txt")
-                report=$(echo "$report" | jq --arg task "$task_name" --arg status "$task_status" --arg details "$task_details" '.tasks += [{"name": $task, "status": $status, "details": $details}]')
+                details_file="/workspace/output/${task_name}-details.txt"
+
+                if [ -f "$details_file" ]; then
+                  task_details=$(cat "$details_file")
+                else
+                  task_details="No details available"
+                fi
+
+                # Agregar tarea al archivo temporal
+                jq --arg task "$task_name" --arg status "$task_status" --arg details "$task_details" \
+                  '.tasks += [{"name": $task, "status": $status, "details": $details}]' \
+                  /workspace/output/final-report.json > /workspace/output/temp-report.json && \
+                  mv /workspace/output/temp-report.json /workspace/output/final-report.json
               done
-              echo "Final Report: $report"
-              curl -X POST -H "Content-Type: application/json" -d "$report" https://httpbin.org/post
+
+              # Leer el reporte final
+              final_report=$(cat /workspace/output/final-report.json)
+              echo "Final Report: $final_report"
+
+              # Enviar el reporte a la API
+              curl -X POST -H "Content-Type: application/json" -d "$final_report" https://httpbin.org/post
       workspaces:
         - name: output
           workspace: shared-workspace
