@@ -67,3 +67,11 @@ spec:
         fi
 
         echo "SonarCloud Quality Gate passed successfully."
+
+      volumeMounts:
+        - name: maven-repo-cache
+          mountPath: /root/.m2/repository
+  volumes:
+    - name: maven-repo-cache
+      persistentVolumeClaim:
+        claimName: maven-repo-cache-pvc
