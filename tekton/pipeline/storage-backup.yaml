@@ -1,0 +1,1765 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 63e3d8f1-e501-4c64-bf0f-355bc0b2996c
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-24T17:27:47Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-0a1e45e4-693a-4412-8774-3f52cd47280c
+    resourceVersion: "1758787"
+    uid: 0933e093-c473-45d2-a262-934e852c6041
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 5Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: maven-repo-cache-pvc
+      namespace: default
+      resourceVersion: "1758779"
+      uid: 0a1e45e4-693a-4412-8774-3f52cd47280c
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/maven-repo-cache-pvc
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-10-24T17:27:47Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 72e2424d-68af-48f6-82da-23a489c5ab6d
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-09T15:19:00Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-0df4a3f5-ce22-49a3-89ff-d3e1e5908db9
+    resourceVersion: "1758679"
+    uid: c19ca25b-173f-45e7-a032-dd06a6cfd20d
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: mysql-pvc
+      namespace: default
+      resourceVersion: "780841"
+      uid: 0df4a3f5-ce22-49a3-89ff-d3e1e5908db9
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/mysql-pvc
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-10-24T17:27:06Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 3d64493e-1406-4660-9931-75ae90d51506
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-11T10:16:34Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-0e156b48-da44-4b3f-b304-1a964af5edfa
+    resourceVersion: "4623960"
+    uid: eecf2463-d3f9-4c02-8893-5b01be2cdfc8
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-313a2d6dde
+      namespace: default
+      resourceVersion: "4623954"
+      uid: 0e156b48-da44-4b3f-b304-1a964af5edfa
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-313a2d6dde
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-11T10:16:34Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: af6e5da7-14e6-4c22-a16a-f7fe02e2b84c
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-14T09:38:06Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-0e2255ce-d565-4f5e-8657-cd447a99d3a5
+    resourceVersion: "4527843"
+    uid: 9251164b-a493-4de0-9e7d-91082f5fd96a
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-1fa0455950
+      namespace: default
+      resourceVersion: "3074452"
+      uid: 0e2255ce-d565-4f5e-8657-cd447a99d3a5
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-1fa0455950
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:44:43Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 14b06ead-c434-47d2-bc94-5029f1d7739c
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-26T17:34:32Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-10c90985-e395-4dd4-9903-879cacbeb74c
+    resourceVersion: "4530152"
+    uid: 37107803-abb6-4442-b797-e989deaf0781
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-b4f3a31d6f
+      namespace: default
+      resourceVersion: "4431592"
+      uid: 10c90985-e395-4dd4-9903-879cacbeb74c
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-b4f3a31d6f
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:56:49Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 2bc66bf1-32ef-4c0a-93e1-f6bf8ca7d93e
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-13T18:32:59Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-13d9ad22-a03f-4dc4-88fd-973369488868
+    resourceVersion: "4527941"
+    uid: 9e011bda-a6eb-4ad3-b7ec-7eab3224d86a
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-b8e07bae44
+      namespace: default
+      resourceVersion: "3052842"
+      uid: 13d9ad22-a03f-4dc4-88fd-973369488868
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-b8e07bae44
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:44:47Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 86790b1a-8caa-4427-9202-716885862383
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T07:44:27Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-16e55e98-0b40-42bc-8bcc-a9f10ab64940
+    resourceVersion: "4799525"
+    uid: 143cfd0f-80a1-4f6f-b6bd-48ffaa01f260
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-30a51890ad
+      namespace: default
+      resourceVersion: "4799519"
+      uid: 16e55e98-0b40-42bc-8bcc-a9f10ab64940
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-30a51890ad
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-12T07:44:27Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 9ebeda9f-b6c1-4226-808c-37726bd449b4
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T08:35:06Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-3ff3f3e0-bed6-4c9d-acef-416d6159650f
+    resourceVersion: "4808912"
+    uid: 94e0bce3-079d-46c4-b8c8-459a6bbbe198
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-7df4c6dd1a
+      namespace: default
+      resourceVersion: "4808906"
+      uid: 3ff3f3e0-bed6-4c9d-acef-416d6159650f
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-7df4c6dd1a
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-12T08:35:06Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 882af286-1489-47ba-aa5a-db107fa5d155
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-02T19:22:39Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-416547e6-4662-4b58-8997-41f4d901444d
+    resourceVersion: "2228522"
+    uid: e6ec48ef-03f1-4acd-a9f5-a00ab244f827
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 2Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: storage-prometheus-alertmanager-0
+      namespace: default
+      resourceVersion: "2228506"
+      uid: 416547e6-4662-4b58-8997-41f4d901444d
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/storage-prometheus-alertmanager-0
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-02T19:22:39Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 301ebba6-bde4-4cc3-9254-f1a66013a9af
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-26T15:26:03Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-42a3be95-6b53-48a6-9222-c5a406024c18
+    resourceVersion: "4530245"
+    uid: e763d98d-92ac-4b05-86a1-475ed7053433
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-675fd13d56
+      namespace: default
+      resourceVersion: "4402122"
+      uid: 42a3be95-6b53-48a6-9222-c5a406024c18
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-675fd13d56
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:56:55Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 14b06ead-c434-47d2-bc94-5029f1d7739c
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-26T18:47:06Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-42d4a43b-8ac1-4f0d-9108-69bd62a6128e
+    resourceVersion: "4530233"
+    uid: 94f72070-89b9-4a72-aaa7-1924b4c47589
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-d53660f2f5
+      namespace: default
+      resourceVersion: "4448865"
+      uid: 42d4a43b-8ac1-4f0d-9108-69bd62a6128e
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-d53660f2f5
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:56:55Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 01a0d3e1-5b67-4ff4-bf57-6f7670af26c6
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-11T10:44:34Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-431802ed-c892-418d-ba40-8e85107d4cb3
+    resourceVersion: "4631716"
+    uid: e9b9d977-5f5a-4e21-aa3d-9e118b522d7c
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-1fa1b7487a
+      namespace: default
+      resourceVersion: "4631711"
+      uid: 431802ed-c892-418d-ba40-8e85107d4cb3
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-1fa1b7487a
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-11T10:44:34Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 63e3d8f1-e501-4c64-bf0f-355bc0b2996c
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-24T19:02:27Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-5276b522-e201-49a8-9141-8129dcc92052
+    resourceVersion: "1772139"
+    uid: 4c201906-eaa1-402e-9bb4-e6b9fcaa5b33
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: mysql-pvc-tekton
+      namespace: default
+      resourceVersion: "1772129"
+      uid: 5276b522-e201-49a8-9141-8129dcc92052
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/mysql-pvc-tekton
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-10-24T19:02:27Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 3d6178b8-adb4-4270-81e0-63d981f7fc55
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T09:12:16Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-7353bfd6-c914-44e8-8e66-27b8f8b26fcc
+    resourceVersion: "4815345"
+    uid: 5c863d50-be0f-4306-b9de-a7a45f21b8e2
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-29b2e89128
+      namespace: default
+      resourceVersion: "4815331"
+      uid: 7353bfd6-c914-44e8-8e66-27b8f8b26fcc
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-29b2e89128
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-12T09:12:17Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 72e2424d-68af-48f6-82da-23a489c5ab6d
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-09T15:20:25Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-8b61824e-2f0c-4ebf-af49-a90b1ec0d1ab
+    resourceVersion: "1758676"
+    uid: 3e36d045-ad80-45ad-b730-a99ada35cba0
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 5Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: maven-repo-cache-pvc
+      namespace: default
+      resourceVersion: "781153"
+      uid: 8b61824e-2f0c-4ebf-af49-a90b1ec0d1ab
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/maven-repo-cache-pvc
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-10-24T17:27:06Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 1ce935b9-9bfd-41a9-98c3-1ad444048e46
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-23T15:23:11Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-8cf4b074-abec-4dc4-89d7-78c1fe60e4db
+    resourceVersion: "1758684"
+    uid: bcdbcd26-8022-48c3-ae7e-ba322f19e1b5
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: mysql-pvc-jenkins
+      namespace: default
+      resourceVersion: "1680896"
+      uid: 8cf4b074-abec-4dc4-89d7-78c1fe60e4db
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/mysql-pvc-jenkins
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-10-24T17:27:06Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 63e3d8f1-e501-4c64-bf0f-355bc0b2996c
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-24T19:33:18Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-a1203622-6992-4e45-a7ec-5ce295c4a3dc
+    resourceVersion: "1776384"
+    uid: 8f31191d-08fd-4796-983e-8e01afbd171a
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: mysql-pvc-jenkins
+      namespace: default
+      resourceVersion: "1776373"
+      uid: a1203622-6992-4e45-a7ec-5ce295c4a3dc
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/mysql-pvc-jenkins
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-10-24T19:33:18Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 301ebba6-bde4-4cc3-9254-f1a66013a9af
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-26T09:48:13Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-a45486bf-e152-48bd-821f-e0b0c7d598a0
+    resourceVersion: "4530127"
+    uid: f1926933-3991-4cc8-a76c-439b10a5f0f5
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-2049cea379
+      namespace: default
+      resourceVersion: "4379589"
+      uid: a45486bf-e152-48bd-821f-e0b0c7d598a0
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-2049cea379
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:56:48Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 301ebba6-bde4-4cc3-9254-f1a66013a9af
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-26T09:05:04Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-a6678503-bc27-4ca0-8ee7-50a976e09838
+    resourceVersion: "4530137"
+    uid: 21944feb-2ba2-4a57-94f1-16d130611e1a
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-b1cb5a1ec4
+      namespace: default
+      resourceVersion: "4369341"
+      uid: a6678503-bc27-4ca0-8ee7-50a976e09838
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-b1cb5a1ec4
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:56:48Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: e67aeac9-f097-411e-a157-0e48b84214e0
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-21T17:44:06Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-b2ad69f1-55c2-4b58-9f27-44874ac10d11
+    resourceVersion: "4527919"
+    uid: 384316c4-32d8-43df-b333-7c74b6966490
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-a4ad3fe2bf
+      namespace: default
+      resourceVersion: "3892553"
+      uid: b2ad69f1-55c2-4b58-9f27-44874ac10d11
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-a4ad3fe2bf
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:44:46Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 14b06ead-c434-47d2-bc94-5029f1d7739c
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-26T19:19:19Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-b3bd641e-98f2-4e86-bd84-46d9c842094b
+    resourceVersion: "4530234"
+    uid: ee83ebf5-f30d-4c73-aa25-cbe9dae553ff
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-f510d57a1d
+      namespace: default
+      resourceVersion: "4456248"
+      uid: b3bd641e-98f2-4e86-bd84-46d9c842094b
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-f510d57a1d
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:56:55Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 66321205-3968-47c9-b316-b2227b5af965
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-17T08:41:25Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-b63785ad-53ab-4a01-a258-2c0d49b791e5
+    resourceVersion: "1758682"
+    uid: f94fc5bb-c020-431f-bdaf-4958775f7436
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: mysql-pvc-ga
+      namespace: default
+      resourceVersion: "1196511"
+      uid: b63785ad-53ab-4a01-a258-2c0d49b791e5
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/mysql-pvc-ga
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-10-24T17:27:06Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: ee70cd2e-014a-47d1-84b5-1e741d0380c3
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T08:56:05Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-b7279076-57f2-4dbe-99a7-9bf30206be6e
+    resourceVersion: "4812368"
+    uid: 7c72d313-8caf-44f2-8f93-65b4a69e7620
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-fe0f7e77d3
+      namespace: default
+      resourceVersion: "4812363"
+      uid: b7279076-57f2-4dbe-99a7-9bf30206be6e
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-fe0f7e77d3
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-12T08:56:05Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 3d732a0a-299b-4de2-acb7-c0f7c942617d
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-11T15:46:50Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-cdc80b0a-f51f-4e49-932d-6496287dde27
+    resourceVersion: "4684983"
+    uid: 1ed07712-b94d-458a-a12e-8418501d7af2
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-85e0f692f1
+      namespace: default
+      resourceVersion: "4684975"
+      uid: cdc80b0a-f51f-4e49-932d-6496287dde27
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-85e0f692f1
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-11T15:46:50Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 462c8cb7-6101-4267-b6d1-8510b617d7a8
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T15:20:36Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-d3ba97ea-2005-4466-b3fe-eec0ef40e6e8
+    resourceVersion: "4880375"
+    uid: 13249341-9b1a-47ce-9316-a7db7303d950
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-fc493fcfe5
+      namespace: default
+      resourceVersion: "4880369"
+      uid: d3ba97ea-2005-4466-b3fe-eec0ef40e6e8
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-fc493fcfe5
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-12T15:20:36Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 3d732a0a-299b-4de2-acb7-c0f7c942617d
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-11T15:45:35Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-d86c9454-576c-45ab-9588-c4912e935c13
+    resourceVersion: "4684570"
+    uid: c64e164f-3eef-4ab0-b905-eac918ef6e42
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-742a46c236
+      namespace: default
+      resourceVersion: "4684565"
+      uid: d86c9454-576c-45ab-9588-c4912e935c13
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-742a46c236
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-11T15:45:35Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 63e3d8f1-e501-4c64-bf0f-355bc0b2996c
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-24T19:55:30Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-db92d056-aefd-45d3-be04-091b2543b883
+    resourceVersion: "1779438"
+    uid: 7e620135-2c8f-4679-9c90-a35716db87ea
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: mysql-pvc-ga
+      namespace: default
+      resourceVersion: "1779427"
+      uid: db92d056-aefd-45d3-be04-091b2543b883
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/mysql-pvc-ga
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-10-24T19:55:30Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: ace82043-6cf0-47f4-a4dd-799f0c06e2a5
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-04T10:51:06Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-dcae0826-63ac-45c4-af31-76911b49b7a3
+    resourceVersion: "555401"
+    uid: 201d2a57-9da8-451e-8968-03e7233eac4d
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: mysql-pvc
+      namespace: default
+      resourceVersion: "415828"
+      uid: dcae0826-63ac-45c4-af31-76911b49b7a3
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/mysql-pvc
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-10-07T09:29:40Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: b1882e99-96e6-4c24-ad9c-1f9769f7003e
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-11T10:53:42Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-eabe394c-73bf-45c8-95d3-a0e71462089c
+    resourceVersion: "4633622"
+    uid: 8006d8ce-0816-4ec1-8d83-034616990949
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-2b59fecc3e
+      namespace: default
+      resourceVersion: "4633615"
+      uid: eabe394c-73bf-45c8-95d3-a0e71462089c
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-2b59fecc3e
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-11T10:53:43Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 3d6178b8-adb4-4270-81e0-63d981f7fc55
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T11:06:00Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-ed3afffe-8487-4132-ba8b-109325a6be7c
+    resourceVersion: "4836258"
+    uid: 458563ac-5b58-4f7d-9a1b-eac52bfe1258
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-49f61bfff7
+      namespace: default
+      resourceVersion: "4836252"
+      uid: ed3afffe-8487-4132-ba8b-109325a6be7c
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-49f61bfff7
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-12T11:06:00Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 2bc66bf1-32ef-4c0a-93e1-f6bf8ca7d93e
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-13T17:43:18Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-ee1e96c9-1bc5-4527-bba2-60e44b1e0864
+    resourceVersion: "4527888"
+    uid: c7b698fa-d846-423b-9d1e-fcda9c27dc57
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-61d5dd2480
+      namespace: default
+      resourceVersion: "3042110"
+      uid: ee1e96c9-1bc5-4527-bba2-60e44b1e0864
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-61d5dd2480
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:44:44Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: ee70cd2e-014a-47d1-84b5-1e741d0380c3
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T08:54:37Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-f04300ca-76bc-42e7-b8c4-9cf8207ad46a
+    resourceVersion: "4811998"
+    uid: 9cde992d-58c6-4592-b3d4-dafe1ed2d628
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-44e35225a6
+      namespace: default
+      resourceVersion: "4811989"
+      uid: f04300ca-76bc-42e7-b8c4-9cf8207ad46a
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-44e35225a6
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-12-12T08:54:37Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 882af286-1489-47ba-aa5a-db107fa5d155
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-02T19:33:27Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-f2b4dd95-84df-4ce1-8667-a162517d55fc
+    resourceVersion: "2984643"
+    uid: 044fb2fb-2199-4d20-9cda-7ae35040c23c
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 10Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: grafana
+      namespace: default
+      resourceVersion: "2230581"
+      uid: f2b4dd95-84df-4ce1-8667-a162517d55fc
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/grafana
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-13T10:59:32Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: b59a0e80-1001-45c8-9d3a-90e21ffcf867
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-11T16:38:06Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-f582ef1a-725a-4ca9-b982-195bb1055bbe
+    resourceVersion: "4527825"
+    uid: a1891eff-5d6e-44a2-98c8-b369ef818bbb
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-0040c148b4
+      namespace: default
+      resourceVersion: "2861875"
+      uid: f582ef1a-725a-4ca9-b982-195bb1055bbe
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-0040c148b4
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-11-27T09:44:42Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      hostPathProvisionerIdentity: 1ce935b9-9bfd-41a9-98c3-1ad444048e46
+      pv.kubernetes.io/provisioned-by: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-23T11:22:33Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: pvc-fa4aac4e-0ecc-4894-8035-a57a644e77f2
+    resourceVersion: "1753613"
+    uid: 07df0e18-fcff-4d42-a76b-5eb40f04f761
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: pvc-f3ce427ce5
+      namespace: default
+      resourceVersion: "1646104"
+      uid: fa4aac4e-0ecc-4894-8035-a57a644e77f2
+    hostPath:
+      path: /tmp/hostpath-provisioner/default/pvc-f3ce427ce5
+      type: ""
+    persistentVolumeReclaimPolicy: Delete
+    storageClassName: standard
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2024-10-24T16:53:30Z"
+    phase: Released
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"maven-repo-cache-pvc","namespace":"default"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"5Gi"}}}}
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-24T17:27:47Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: maven-repo-cache-pvc
+    namespace: default
+    resourceVersion: "1758790"
+    uid: 0a1e45e4-693a-4412-8774-3f52cd47280c
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-0a1e45e4-693a-4412-8774-3f52cd47280c
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 5Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"mysql-pvc-ga","namespace":"default"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"1Gi"}}}}
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-24T19:55:30Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: mysql-pvc-ga
+    namespace: default
+    resourceVersion: "1779444"
+    uid: db92d056-aefd-45d3-be04-091b2543b883
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-db92d056-aefd-45d3-be04-091b2543b883
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"mysql-pvc-jenkins","namespace":"default"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"1Gi"}}}}
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-24T19:33:18Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: mysql-pvc-jenkins
+    namespace: default
+    resourceVersion: "1776395"
+    uid: a1203622-6992-4e45-a7ec-5ce295c4a3dc
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-a1203622-6992-4e45-a7ec-5ce295c4a3dc
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"mysql-pvc-tekton","namespace":"default"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"1Gi"}}}}
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-10-24T19:02:27Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: mysql-pvc-tekton
+    namespace: default
+    resourceVersion: "1772144"
+    uid: 5276b522-e201-49a8-9141-8129dcc92052
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-5276b522-e201-49a8-9141-8129dcc92052
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-11T10:44:34Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-1fa1b7487a
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-dvl55
+      uid: 682bef98-d1b6-450b-991e-d70de0c1b2b5
+    resourceVersion: "4631722"
+    uid: 431802ed-c892-418d-ba40-8e85107d4cb3
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-431802ed-c892-418d-ba40-8e85107d4cb3
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T09:12:15Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-29b2e89128
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-74z8s
+      uid: 5d815596-3889-492b-a23c-7c542c3f85ad
+    resourceVersion: "4815347"
+    uid: 7353bfd6-c914-44e8-8e66-27b8f8b26fcc
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-7353bfd6-c914-44e8-8e66-27b8f8b26fcc
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-11T10:53:41Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-2b59fecc3e
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-rj4mt
+      uid: 4d169175-32b1-44df-b72a-2434d84ffe01
+    resourceVersion: "4633624"
+    uid: eabe394c-73bf-45c8-95d3-a0e71462089c
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-eabe394c-73bf-45c8-95d3-a0e71462089c
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T07:44:27Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-30a51890ad
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-d4pgb
+      uid: e8f92031-e16a-49ea-87f8-0f3e69bdb2c5
+    resourceVersion: "4799530"
+    uid: 16e55e98-0b40-42bc-8bcc-a9f10ab64940
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-16e55e98-0b40-42bc-8bcc-a9f10ab64940
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-11T10:16:34Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-313a2d6dde
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-wf6tj
+      uid: 000e6eae-13cd-406b-b5bc-cb3e6ae5a30d
+    resourceVersion: "4623962"
+    uid: 0e156b48-da44-4b3f-b304-1a964af5edfa
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-0e156b48-da44-4b3f-b304-1a964af5edfa
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T08:54:37Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-44e35225a6
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-dv57s
+      uid: d4177692-766c-466f-aafa-b194fccf0311
+    resourceVersion: "4812006"
+    uid: f04300ca-76bc-42e7-b8c4-9cf8207ad46a
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-f04300ca-76bc-42e7-b8c4-9cf8207ad46a
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T11:06:00Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-49f61bfff7
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-g8zsc
+      uid: 05ce91c2-eae2-40be-893a-758fb25d79f2
+    resourceVersion: "4836263"
+    uid: ed3afffe-8487-4132-ba8b-109325a6be7c
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-ed3afffe-8487-4132-ba8b-109325a6be7c
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-11T15:45:35Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-742a46c236
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-tmzcv
+      uid: 4847540a-5740-4543-a463-5ac2bcca8abe
+    resourceVersion: "4684576"
+    uid: d86c9454-576c-45ab-9588-c4912e935c13
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-d86c9454-576c-45ab-9588-c4912e935c13
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T08:35:04Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-7df4c6dd1a
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-cdhg2
+      uid: 98400f45-4022-4ac0-8b79-321b840b7251
+    resourceVersion: "4808914"
+    uid: 3ff3f3e0-bed6-4c9d-acef-416d6159650f
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-3ff3f3e0-bed6-4c9d-acef-416d6159650f
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-11T15:46:49Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-85e0f692f1
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-vfmjv
+      uid: ce4a45e5-1c09-4bc0-9cb2-0487711ec00a
+    resourceVersion: "4684989"
+    uid: cdc80b0a-f51f-4e49-932d-6496287dde27
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-cdc80b0a-f51f-4e49-932d-6496287dde27
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T15:20:36Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-fc493fcfe5
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-jpbjr
+      uid: 5a49202e-2cb8-4928-a4e7-67d503625a90
+    resourceVersion: "4880378"
+    uid: d3ba97ea-2005-4466-b3fe-eec0ef40e6e8
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-d3ba97ea-2005-4466-b3fe-eec0ef40e6e8
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-12-12T08:56:05Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: pvc-fe0f7e77d3
+    namespace: default
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: ci-pipeline-run-m7wlm
+      uid: d9ec7bc0-20b2-480d-beb4-4feb3e641f65
+    resourceVersion: "4812374"
+    uid: b7279076-57f2-4dbe-99a7-9bf30206be6e
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-b7279076-57f2-4dbe-99a7-9bf30206be6e
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 1Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+      volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    creationTimestamp: "2024-11-02T19:22:39Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    labels:
+      app.kubernetes.io/instance: prometheus
+      app.kubernetes.io/name: alertmanager
+    name: storage-prometheus-alertmanager-0
+    namespace: default
+    resourceVersion: "2228529"
+    uid: 416547e6-4662-4b58-8997-41f4d901444d
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 2Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+    volumeName: pvc-416547e6-4662-4b58-8997-41f4d901444d
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 2Gi
+    phase: Bound
+kind: List
+metadata:
+  resourceVersion: ""

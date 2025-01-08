@@ -1,0 +1,162 @@
+apiVersion: tekton.dev/v1
+items:
+- apiVersion: tekton.dev/v1
+  kind: Pipeline
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"tekton.dev/v1beta1","kind":"Pipeline","metadata":{"annotations":{},"name":"ci-pipeline","namespace":"default"},"spec":{"description":"This pipeline clones a git repo, then builds db and app\n","finally":[{"name":"generate-final-report","taskSpec":{"steps":[{"image":"ubuntu:latest","name":"consolidate-report","script":"apt-get update \u0026\u0026 apt-get install -y curl jq\n# Compilar el reporte final leyendo los archivos del directorio report\nreport=\"{\\\"tasks\\\": []}\"\nfor file in /workspace/output/*-status.txt; do\n  task_name=$(basename \"$file\" -status.txt)\n  task_status=$(cat \"$file\")\n  task_details=$(cat \"/workspace/output/${task_name}-details.txt\")\n  report=$(echo \"$report\" | jq --arg task \"$task_name\" --arg status \"$task_status\" --arg details \"$task_details\" '.tasks += [{\"name\": $task, \"status\": $status, \"details\": $details}]')\ndone\necho \"Final Report: $report\"\ncurl -X POST -H \"Content-Type: application/json\" -d \"$report\" https://httpbin.org/post\n"}]},"workspaces":[{"name":"output","workspace":"shared-workspace"}]}],"params":[{"description":"The git repo URL to clone from","name":"repo-url","type":"string"},{"name":"image-reference","type":"string"},{"name":"SONAR_PROJECT_KEY","type":"string"},{"name":"SONAR_ORGANIZATION","type":"string"}],"tasks":[{"name":"checkout","params":[{"name":"url","value":"$(params.repo-url)"}],"taskRef":{"name":"git-clone"},"workspaces":[{"name":"output","workspace":"shared-workspace"}]},{"name":"sonar","params":[{"name":"SONAR_PROJECT_KEY","value":"$(params.SONAR_PROJECT_KEY)"},{"name":"SONAR_ORGANIZATION","value":"$(params.SONAR_ORGANIZATION)"}],"runAfter":["checkout"],"taskRef":{"name":"sonar-task"},"workspaces":[{"name":"output","workspace":"shared-workspace"}]},{"name":"dependency-check","params":[{"name":"workspacePath","value":"$(workspaces.output.path)"}],"runAfter":["checkout"],"taskRef":{"name":"dependency-check"},"workspaces":[{"name":"output","workspace":"shared-workspace"}]},{"name":"build-app","params":[{"name":"workspacePath","value":"$(workspaces.output.path)"}],"runAfter":["checkout"],"taskRef":{"name":"maven-build"},"workspaces":[{"name":"output","workspace":"shared-workspace"}]},{"name":"report-status","params":[{"name":"stageName","value":"Maven Build"},{"name":"status","value":"$(tasks.build-app.results.status)"},{"name":"details","value":"$(tasks.build-app.results.details)"}],"runAfter":["build-app"],"taskRef":{"name":"report-status"}},{"name":"build-push","runAfter":["build-app"],"taskRef":{"name":"sleep-task"}},{"name":"check-sonar-results","runAfter":["build-push","sonar"],"taskRef":{"name":"check-sonar-status"},"workspaces":[{"name":"output","workspace":"shared-workspace"}]},{"name":"deploy-mysql","runAfter":["check-sonar-results"],"taskRef":{"name":"deploy-mysql"},"workspaces":[{"name":"output","workspace":"shared-workspace"}]},{"name":"liquibase","runAfter":["deploy-mysql"],"taskRef":{"name":"liquibase-update"},"workspaces":[{"name":"output","workspace":"shared-workspace"}]},{"name":"deploy-app","runAfter":["liquibase"],"taskRef":{"name":"spring-app-deployment-apply"},"workspaces":[{"name":"output","workspace":"shared-workspace"}]}],"workspaces":[{"description":"This workspace contains the cloned repo files, so they can be read by the next task\n","name":"shared-workspace"},{"name":"docker-credentials"}]}}
+    generation: 30
+    name: ci-pipeline
+    namespace: default
+  spec:
+    description: |
+      This pipeline clones a git repo, then builds db and app
+    finally:
+    - name: generate-final-report
+      taskSpec:
+        metadata: {}
+        spec: null
+        steps:
+        - computeResources: {}
+          image: ubuntu:latest
+          name: consolidate-report
+          script: |
+            apt-get update && apt-get install -y curl jq
+            # Compilar el reporte final leyendo los archivos del directorio report
+            report="{\"tasks\": []}"
+            for file in /workspace/output/*-status.txt; do
+              task_name=$(basename "$file" -status.txt)
+              task_status=$(cat "$file")
+              task_details=$(cat "/workspace/output/${task_name}-details.txt")
+              report=$(echo "$report" | jq --arg task "$task_name" --arg status "$task_status" --arg details "$task_details" '.tasks += [{"name": $task, "status": $status, "details": $details}]')
+            done
+            echo "Final Report: $report"
+            curl -X POST -H "Content-Type: application/json" -d "$report" https://httpbin.org/post
+      workspaces:
+      - name: output
+        workspace: shared-workspace
+    params:
+    - description: The git repo URL to clone from
+      name: repo-url
+      type: string
+    - name: image-reference
+      type: string
+    - name: SONAR_PROJECT_KEY
+      type: string
+    - name: SONAR_ORGANIZATION
+      type: string
+    tasks:
+    - name: checkout
+      params:
+      - name: url
+        value: $(params.repo-url)
+      taskRef:
+        kind: Task
+        name: git-clone
+      workspaces:
+      - name: output
+        workspace: shared-workspace
+    - name: sonar
+      params:
+      - name: SONAR_PROJECT_KEY
+        value: $(params.SONAR_PROJECT_KEY)
+      - name: SONAR_ORGANIZATION
+        value: $(params.SONAR_ORGANIZATION)
+      runAfter:
+      - checkout
+      taskRef:
+        kind: Task
+        name: sonar-task
+      workspaces:
+      - name: output
+        workspace: shared-workspace
+    - name: dependency-check
+      params:
+      - name: workspacePath
+        value: $(workspaces.output.path)
+      runAfter:
+      - checkout
+      taskRef:
+        kind: Task
+        name: dependency-check
+      workspaces:
+      - name: output
+        workspace: shared-workspace
+    - name: build-app
+      params:
+      - name: workspacePath
+        value: $(workspaces.output.path)
+      runAfter:
+      - checkout
+      taskRef:
+        kind: Task
+        name: maven-build
+      workspaces:
+      - name: output
+        workspace: shared-workspace
+    - name: report-status
+      params:
+      - name: stageName
+        value: Maven Build
+      - name: status
+        value: $(tasks.build-app.results.status)
+      - name: details
+        value: $(tasks.build-app.results.details)
+      runAfter:
+      - build-app
+      taskRef:
+        kind: Task
+        name: report-status
+    - name: build-push
+      runAfter:
+      - build-app
+      taskRef:
+        kind: Task
+        name: sleep-task
+    - name: check-sonar-results
+      runAfter:
+      - build-push
+      - sonar
+      taskRef:
+        kind: Task
+        name: check-sonar-status
+      workspaces:
+      - name: output
+        workspace: shared-workspace
+    - name: deploy-mysql
+      runAfter:
+      - check-sonar-results
+      taskRef:
+        kind: Task
+        name: deploy-mysql
+      workspaces:
+      - name: output
+        workspace: shared-workspace
+    - name: liquibase
+      runAfter:
+      - deploy-mysql
+      taskRef:
+        kind: Task
+        name: liquibase-update
+      workspaces:
+      - name: output
+        workspace: shared-workspace
+    - name: deploy-app
+      runAfter:
+      - liquibase
+      taskRef:
+        kind: Task
+        name: spring-app-deployment-apply
+      workspaces:
+      - name: output
+        workspace: shared-workspace
+    workspaces:
+    - description: |
+        This workspace contains the cloned repo files, so they can be read by the next task
+      name: shared-workspace
+    - name: docker-credentials
+kind: PipelineList
+metadata:
+  continue: ""
+  resourceVersion: "4894875"

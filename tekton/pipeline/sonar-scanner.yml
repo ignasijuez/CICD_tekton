@@ -45,6 +45,9 @@ spec:
       #  limits:
       #    memory: "2Gi"
       #    cpu: "2"
+      volumeMounts:
+        - name: maven-repo-cache
+          mountPath: /root/.m2/repository
 
     - name: extract-task-id
       image: ubuntu:latest
@@ -57,3 +60,8 @@ spec:
         task_id=$(grep 'ceTaskId' /workspace/output/.scannerwork/report-task.txt | cut -d '=' -f 2)
         echo "Task ID: $task_id"
         echo $task_id > /workspace/output/task-id.txt
+  
+  volumes:
+    - name: maven-repo-cache
+      persistentVolumeClaim:
+        claimName: maven-repo-cache-pvc
