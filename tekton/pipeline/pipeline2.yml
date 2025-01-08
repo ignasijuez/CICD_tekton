@@ -46,7 +46,7 @@ spec:
           workspace: shared-workspace
 
     - name: dependency-check
-      runAfter: ["checkout"]
+      runAfter: ["sonar"]
       taskRef:
         name: dependency-check
       params:
@@ -57,7 +57,7 @@ spec:
           workspace: shared-workspace
 
     - name: build-app
-      runAfter: ["checkout"]
+      runAfter: ["dependency-check"]
       taskRef:
         name: maven-build
       params:
@@ -95,7 +95,7 @@ spec:
 
     # Simulate avg time build&push
     - name: build-push
-      runAfter: ["build-app"]
+      runAfter: ["report-status"]
       taskRef:
         name: sleep-task
 
